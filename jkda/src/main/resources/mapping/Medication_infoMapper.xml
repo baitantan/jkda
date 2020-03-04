@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="core/dao.Medication_infoMapper" >
+  <resultMap id="BaseResultMap" type="core/pojo.Medication_info" >
+    <result column="id" property="id" jdbcType="BIGINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="drug" property="drug" jdbcType="VARCHAR" />
+    <result column="number" property="number" jdbcType="TINYINT" />
+  </resultMap>
+  <insert id="insert" parameterType="core/pojo.Medication_info" >
+    insert into medication_info (id, create_time, update_time, 
+      drug, number)
+    values (#{id,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{drug,jdbcType=VARCHAR}, #{number,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="core/pojo.Medication_info" >
+    insert into medication_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="drug != null" >
+        drug,
+      </if>
+      <if test="number != null" >
+        number,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="drug != null" >
+        #{drug,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

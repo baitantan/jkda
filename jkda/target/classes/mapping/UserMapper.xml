@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="core/dao.UserMapper" >
+  <resultMap id="BaseResultMap" type="core/pojo.User" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="phone_number" property="phoneNumber" jdbcType="CHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="TINYINT" />
+    <result column="blood_type" property="bloodType" jdbcType="CHAR" />
+    <result column="birthday" property="birthday" jdbcType="DATE" />
+    <result column="height" property="height" jdbcType="TINYINT" />
+    <result column="weight" property="weight" jdbcType="TINYINT" />
+    <result column="contact" property="contact" jdbcType="VARCHAR" />
+    <result column="contact_phone" property="contactPhone" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, create_time, update_time, phone_number, password, sex, blood_type, birthday, 
+    height, weight, contact, contact_phone
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="core/pojo.User" >
+    insert into user (create_time, update_time,
+      phone_number, password, sex, 
+      blood_type, birthday, height, 
+      weight, contact, contact_phone
+      )
+    values (#{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP},
+      #{phoneNumber,jdbcType=CHAR}, #{password,jdbcType=VARCHAR}, #{sex,jdbcType=TINYINT}, 
+      #{bloodType,jdbcType=CHAR}, #{birthday,jdbcType=DATE}, #{height,jdbcType=TINYINT}, 
+      #{weight,jdbcType=TINYINT}, #{contact,jdbcType=VARCHAR}, #{contactPhone,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="core/pojo.User" >
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="phoneNumber != null" >
+        phone_number,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="bloodType != null" >
+        blood_type,
+      </if>
+      <if test="birthday != null" >
+        birthday,
+      </if>
+      <if test="height != null" >
+        height,
+      </if>
+      <if test="weight != null" >
+        weight,
+      </if>
+      <if test="contact != null" >
+        contact,
+      </if>
+      <if test="contactPhone != null" >
+        contact_phone,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="phoneNumber != null" >
+        #{phoneNumber,jdbcType=CHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=TINYINT},
+      </if>
+      <if test="bloodType != null" >
+        #{bloodType,jdbcType=CHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="height != null" >
+        #{height,jdbcType=TINYINT},
+      </if>
+      <if test="weight != null" >
+        #{weight,jdbcType=TINYINT},
+      </if>
+      <if test="contact != null" >
+        #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null" >
+        #{contactPhone,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="core/pojo.User" >
+    update user
+    <set >
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="phoneNumber != null" >
+        phone_number = #{phoneNumber,jdbcType=CHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=TINYINT},
+      </if>
+      <if test="bloodType != null" >
+        blood_type = #{bloodType,jdbcType=CHAR},
+      </if>
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="height != null" >
+        height = #{height,jdbcType=TINYINT},
+      </if>
+      <if test="weight != null" >
+        weight = #{weight,jdbcType=TINYINT},
+      </if>
+      <if test="contact != null" >
+        contact = #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null" >
+        contact_phone = #{contactPhone,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="core/pojo.User" >
+    update user
+    set create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      phone_number = #{phoneNumber,jdbcType=CHAR},
+      password = #{password,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=TINYINT},
+      blood_type = #{bloodType,jdbcType=CHAR},
+      birthday = #{birthday,jdbcType=DATE},
+      height = #{height,jdbcType=TINYINT},
+      weight = #{weight,jdbcType=TINYINT},
+      contact = #{contact,jdbcType=VARCHAR},
+      contact_phone = #{contactPhone,jdbcType=CHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

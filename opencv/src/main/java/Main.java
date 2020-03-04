@@ -1,16 +1,9 @@
-import net.sourceforge.tess4j.Tesseract;
-import net.sourceforge.tess4j.TesseractException;
 import org.opencv.core.Core;
-
 import org.opencv.core.MatOfPoint;
-import org.opencv.core.MatOfPoint2f;
-import org.opencv.imgproc.Imgproc;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import util.ImageUtils;
 
-import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -42,6 +35,7 @@ public class Main {
 
         imageUtils.saveImg(filePath + "65.jpg");
         //System.out.println(ImageUtils.doOCR(filePath+"61.jpg"));*/
+        System.out.println(1);
         ImageUtils imageUtils = new ImageUtils(filePath + fileName);
         imageUtils.medianBlur();
         imageUtils.Canny();

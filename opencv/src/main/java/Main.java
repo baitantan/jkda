@@ -35,7 +35,8 @@ public class Main {
 
         imageUtils.saveImg(filePath + "65.jpg");
         //System.out.println(ImageUtils.doOCR(filePath+"61.jpg"));*/
-        System.out.println(1);
+        
+      
         ImageUtils imageUtils = new ImageUtils(filePath + fileName);
         imageUtils.medianBlur();
         imageUtils.Canny();

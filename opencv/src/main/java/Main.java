@@ -30,13 +30,9 @@ public class Main {
         //int uCNew = imageUtils.getUCNew();
         //System.out.println(uCNew);
         imageUtils.binaryzation(70);
-
         MatOfPoint2f matOfPoint2f = new MatOfPoint2f(new MatOfPoint());
-
         imageUtils.saveImg(filePath + "65.jpg");
         //System.out.println(ImageUtils.doOCR(filePath+"61.jpg"));*/
-        
-      
         ImageUtils imageUtils = new ImageUtils(filePath + fileName);
         imageUtils.medianBlur();
         imageUtils.Canny();

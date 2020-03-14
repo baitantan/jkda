@@ -2,6 +2,8 @@ package util;
 
 import net.sourceforge.tess4j.Tesseract;
 import net.sourceforge.tess4j.TesseractException;
+
+import org.checkerframework.checker.units.qual.s;
 import org.opencv.core.*;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
@@ -20,6 +22,10 @@ import java.util.List;
 public class ImageUtils {
     private static final int BLACK = 0;
     private static final int WHITE = 255;
+    private static final int PHOTO_HTGHT = 300;
+    private static final int PHOTO_WIDTH = 400;
+    private static final int WORD_HTGHT = 30;
+    private static final int WORD_WIDTH = 40;
 
 
     private Mat mat;
@@ -337,15 +343,76 @@ public class ImageUtils {
 
 
 
+    /**
+     * OpenCV提供的中值滤波降噪算法
+     */
     public void medianBlur(){
         Mat mat = new Mat();
         Imgproc.medianBlur(this.mat, mat , 5);
         this.mat = mat;
     }
-    public void Canny(){
+
+    /**
+     * OPenCV提供的Canny降噪方法
+     */
+    public void canny(){
         Mat mat = new Mat();
         Imgproc.Canny(this.mat, mat, 50, 150, 3);
         this.mat = mat;
 
+    }
+
+    /**
+     * 将图片大小固定化
+     */
+    public void photoResize(){
+        this.mat = resize(this.mat, PHOTO_HTGHT, PHOTO_HTGHT);
+    }
+
+
+    /**
+     * 使用指定的长宽归一化
+     * @param src
+     * @param height
+     * @param width
+     * @return
+     */
+    public Mat resize(Mat src , int height , int width){
+        Mat dst = new Mat();
+        //OpenCV提供的默认归一化方法
+        Imgproc.resize(src, dst, new Size(width , height));
+        //OpenCV提供的可以指定更多参数的归一化方法
+        //src: 待改变大小的图像
+        //dst: 输出的目标图像
+        //dsize: 目标图像的尺寸
+        //fx：width方向的缩放比例，如果它是0，那么它就会按照
+        //(double)dsize.width/src.cols来计算
+        //fy：height方向的缩放比例，如果它是0，那么它就会按照(double)dsize.height/src.rows来计算
+        //interpolation：这个是指定插值的方式，图像缩放之后，肯定像素要进行重新计算的，就靠这个参数来指定重新计算像素的方式，有以下几种：
+        //INTER_NEAREST - 最邻近插值
+        //INTER_LINEAR - 双线性插值，如果最后一个参数你不指定，默认使用这种方法
+        //INTER_AREA - 区域插值; 区域插值分为3种情况。图像放大时类似于线性插值，图像缩小时可以避免波纹出现。
+        //INTER_CUBIC -基于4x4像素邻域的3次插值法
+        //INTER_LANCZOS4 - 8x8像素邻域内的Lanczos插值
+        //Imgproc.resize(src, dst, dsize, 0, 0, Imgproc.INTER_AREA);
+        return dst;
+    }
+
+    /**
+     * 图片分割
+     * @param src
+     * @param start_Height
+     * @param end_Height
+     * @param start_Width
+     * @param end_Width
+     * @return
+     */
+    public Mat split(Mat src , int start_Height , int end_Height , int start_Width , int end_Width){
+        Mat result = new Mat();
+        Rect rect = new Rect(start_Width, start_Height, end_Width - start_Width, end_Height - start_Height);
+        //原理：在生成新的图片时只生成制定的部分
+        Mat tmp_Mat = new Mat(src, rect);
+        tmp_Mat.copyTo(result);
+        return result;
     }
 }

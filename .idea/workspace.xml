@@ -9,7 +9,21 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="259fb85b-1cd0-4f8a-aadc-8c51bd390d2b" name="Default Changelist" comment="" />
+    <list default="true" id="259fb85b-1cd0-4f8a-aadc-8c51bd390d2b" name="Default Changelist" comment="完成图片分割等的前期处理部分！">
+      <change afterPath="$PROJECT_DIR$/opencv/src/main/java/test/PhotoSpiltTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/opencv/src/main/java/test/TestPhotoResize.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/opencv/src/main/java/test/TestPreProcess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/src/main/java/util/ImageUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/src/main/java/util/ImageUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/target/classes/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/target/classes/OpenCVJavaTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/target/classes/OpenCVJavaTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/target/classes/TesseractTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/target/classes/TesseractTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/target/classes/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/target/classes/Test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/target/classes/util/ImageUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/target/classes/util/ImageUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/target/classes/util/ImageViewer.class" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/target/classes/util/ImageViewer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/opencv/META-INF/opencv.kotlin_module" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -73,6 +87,7 @@
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
+        <option value="chenshuai &lt;iechenshuai@foxmail.com&gt;\" />
         <option value="chenshuai &lt;iechenshuai@foxmail.com&gt;" />
       </list>
     </option>
@@ -101,7 +116,9 @@
     </option>
   </component>
   <component name="ProjectId" id="1Xpwr6SEtIQxlBkM2OjPS6xwn2R" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -129,7 +146,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.completion" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -155,20 +172,7 @@
       <recent name="D:\project\IDEAProject\jkda\jkda\src\main\test\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="HelloWord (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.cs.gson.HelloWord" />
-      <module name="quickstart" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.cs.gson.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.TestPreProcess">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="opencv" />
@@ -183,24 +187,41 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Test" />
+    <configuration name="PhotoSpiltTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="test.PhotoSpiltTest" />
       <module name="opencv" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TreeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="quickstart" />
+    <configuration name="TestPhotoResize" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="test.TestPhotoResize" />
+      <module name="opencv" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.cs.util.*" />
+          <option name="PATTERN" value="test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.cs.util" />
-      <option name="MAIN_CLASS_NAME" value="com.cs.util.TreeTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestPreProcess" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="test.TestPreProcess" />
+      <module name="opencv" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -305,20 +326,20 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.HelloWord (1)" />
       <item itemvalue="Application.OpenCVJavaTest" />
       <item itemvalue="Application.Main" />
-      <item itemvalue="Application.Test" />
-      <item itemvalue="JUnit.TreeTest" />
       <item itemvalue="Maven.jkda [mybatis-generator:generate,-e]" />
+      <item itemvalue="Application.TestPhotoResize" />
+      <item itemvalue="Application.PhotoSpiltTest" />
+      <item itemvalue="Application.TestPreProcess" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TestPreProcess" />
+        <item itemvalue="Application.PhotoSpiltTest" />
+        <item itemvalue="Application.TestPhotoResize" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.OpenCVJavaTest" />
-        <item itemvalue="Application.Test" />
-        <item itemvalue="Application.HelloWord (1)" />
-        <item itemvalue="JUnit.TreeTest" />
       </list>
     </recent_temporary>
   </component>
@@ -406,7 +427,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -415,7 +438,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="It is not important!" />
     <MESSAGE value="It is not important too!" />
-    <option name="LAST_COMMIT_MESSAGE" value="It is not important too!" />
+    <MESSAGE value="完成图片分割等的前期处理部分！" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成图片分割等的前期处理部分！" />
   </component>
   <component name="WindowStateProjectService">
     <state x="344" y="42" key="#All_in_quickstart" timestamp="1581760241475">
@@ -430,30 +454,30 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="548" y="271" width="439" height="291" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1582082147021" />
-    <state x="409" y="6" key="CommitChangelistDialog2" timestamp="1583323809236">
+    <state x="409" y="6" key="CommitChangelistDialog2" timestamp="1584254339982">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="409" y="6" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1583323809236" />
+    <state x="409" y="6" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1584254339982" />
     <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1583323399659">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1583323399659" />
-    <state width="1493" height="588" key="GridCell.Tab.0.bottom" timestamp="1582277869594">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1584253840734">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="588" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1582277869594" />
-    <state width="1493" height="588" key="GridCell.Tab.0.center" timestamp="1582277869593">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584253840734" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1584253840734">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="588" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1582277869593" />
-    <state width="1493" height="588" key="GridCell.Tab.0.left" timestamp="1582277869593">
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1584253840734" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1584253840734">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="588" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1582277869593" />
-    <state width="1493" height="588" key="GridCell.Tab.0.right" timestamp="1582277869594">
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1584253840734" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1584253840734">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="588" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1582277869594" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1584253840734" />
     <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1581850413656">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -470,10 +494,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1581850413656" />
-    <state x="249" y="0" width="1203" height="715" key="SettingsEditor" timestamp="1583323412134">
+    <state x="556" y="123" key="RollbackChangesDialog" timestamp="1584251292958">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="249" y="0" width="1203" height="715" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1583323412134" />
+    <state x="556" y="123" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1584251292958" />
+    <state x="249" y="0" width="1203" height="715" key="SettingsEditor" timestamp="1584251288282">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="249" y="0" width="1203" height="715" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1584251288282" />
     <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1583323823817">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -498,9 +526,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="178" y="107" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1582167771522" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1581925435370">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1584252399789">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1581925435370" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1584252399789" />
   </component>
 </project>

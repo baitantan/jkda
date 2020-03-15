@@ -2,8 +2,6 @@ package util;
 
 import net.sourceforge.tess4j.Tesseract;
 import net.sourceforge.tess4j.TesseractException;
-
-import org.checkerframework.checker.units.qual.s;
 import org.opencv.core.*;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
@@ -22,11 +20,35 @@ import java.util.List;
 public class ImageUtils {
     private static final int BLACK = 0;
     private static final int WHITE = 255;
-    private static final int PHOTO_HTGHT = 300;
-    private static final int PHOTO_WIDTH = 400;
-    private static final int WORD_HTGHT = 30;
-    private static final int WORD_WIDTH = 40;
 
+    public static final int i = 2;
+    //第二代身份证宽54.0mm
+    public static final int PHOTN_HEIFHT = 540 *  i;
+    //第二代身份证长85.6mm
+    public static final int PHOTO_WIDTH = 856*  i;
+    //
+    public static final int WORD_HEIGHT = 30;
+    public static final int WORD_WIDTH = 40;
+    //姓名所在区域
+    public static final int NAME_START_HEIGHT = 60*  i;
+    public static final int NAME_END_HEIGHT = 105*  i;
+    public static final int NAME_START_WIDTH = 155*  i;
+    public static final int NAME_END_WIDTH = 380*  i;
+    //民族所在区域
+    public static final int NATION_START_HEIGHT = 135*  i;
+    public static final int NATION_END_HEIGHT = 170*  i;
+    public static final int NATION_START_WIDTH = 325*  i;
+    public static final int NATION_END_WIDTH = 495*  i;
+    //地址所在区域
+    public static final int ADDRESS_START_HEIGHT = 270*  i;
+    public static final int ADDRESS_END_HEIGHT = 430*  i;
+    public static final int ADDRESS_START_WIDTH = 155*  i;
+    public static final int ADDRESS_END_WIDTH = 510*  i;
+    //身份证号码所在区域
+    public static final int NUMBER_START_HEIGHT = 450*  i;
+    public static final int NUMBER_END_HEIGHT = 490*  i;
+    public static final int NUMBER_START_WIDTH = 290*  i;
+    public static final int NUMBER_END_WIDTH = 775*  i;
 
     private Mat mat;
 
@@ -46,14 +68,14 @@ public class ImageUtils {
         mat = Imgcodecs.imread(imgFilePath);
     }
 
-    public void ImageUtils(Mat mat) {
+    public  ImageUtils(Mat mat) {
         this.mat = mat;
     }
 
     /**
      * 加载图片
      *
-     * @param imgFilePath
+     * @param imgFilePath 等待加载的图像的路径
      */
     public void loadImg(String imgFilePath) {
         mat = Imgcodecs.imread(imgFilePath);
@@ -62,7 +84,7 @@ public class ImageUtils {
     /**
      * 获取图片高度的函数
      *
-     * @return
+     * @return 图片高度
      */
     public int getHeight() {
         return mat.rows();
@@ -71,7 +93,7 @@ public class ImageUtils {
     /**
      * 获取图片宽度的函数
      *
-     * @return
+     * @return 图片宽度
      */
     public int getWidth() {
         return mat.cols();
@@ -80,9 +102,9 @@ public class ImageUtils {
     /**
      * 获取图片像素点的函数
      *
-     * @param y
-     * @param x
-     * @return
+     * @param y 行
+     * @param x 列
+     * @return 某像素点的值
      */
     public int getPixel(int y, int x) {
         // 我们处理的是单通道灰度图
@@ -92,9 +114,9 @@ public class ImageUtils {
     /**
      * 设置图片像素点的函数
      *
-     * @param y
-     * @param x
-     * @param color
+     * @param y 行
+     * @param x 列
+     * @param color 需要设置的值
      */
     public void setPixel(int y, int x, int color) {
         // 我们处理的是单通道灰度图
@@ -104,8 +126,8 @@ public class ImageUtils {
     /**
      * 保存图片的函数
      *
-     * @param filename
-     * @return
+     * @param filename 文件名
+     * @return 是否成功保存
      */
     public boolean saveImg(String filename) {
         return Imgcodecs.imwrite(filename, mat);
@@ -260,8 +282,8 @@ public class ImageUtils {
 
 
     public RotatedRect minAreaRect(){
-        RotatedRect rotatedRect = Imgproc.minAreaRect(new MatOfPoint2f(findContours().get(0)));
-        return rotatedRect;
+        return Imgproc.minAreaRect(new MatOfPoint2f(findContours().get(0)));
+
     }
 
 
@@ -333,8 +355,8 @@ public class ImageUtils {
 
         try {
 
-            String result = tesseract.doOCR(new File(fileName));
-            return result;
+            return tesseract.doOCR(new File(fileName));
+
         }catch (TesseractException e){
             System.err.print(e.getMessage());
         }
@@ -366,18 +388,18 @@ public class ImageUtils {
      * 将图片大小固定化
      */
     public void photoResize(){
-        this.mat = resize(this.mat, PHOTO_HTGHT, PHOTO_HTGHT);
+        this.mat = resize(this.mat, PHOTO_WIDTH, PHOTN_HEIFHT);
     }
 
 
     /**
      * 使用指定的长宽归一化
-     * @param src
-     * @param height
-     * @param width
-     * @return
+     * @param src 原图像
+     * @param height 目标图像的高度
+     * @param width 目标图像的宽度
+     * @return 目标图像
      */
-    public Mat resize(Mat src , int height , int width){
+    public Mat resize(Mat src , int width , int height){
         Mat dst = new Mat();
         //OpenCV提供的默认归一化方法
         Imgproc.resize(src, dst, new Size(width , height));
@@ -400,18 +422,18 @@ public class ImageUtils {
 
     /**
      * 图片分割
-     * @param src
-     * @param start_Height
-     * @param end_Height
-     * @param start_Width
-     * @param end_Width
-     * @return
+
+     * @param start_Height 高度起点
+     * @param end_Height  高度终点
+     * @param start_Width 宽度起点
+     * @param end_Width 宽度终点
+     * @return 处理完毕的图像
      */
-    public Mat split(Mat src , int start_Height , int end_Height , int start_Width , int end_Width){
+    public Mat split(int start_Height , int end_Height , int start_Width , int end_Width){
         Mat result = new Mat();
         Rect rect = new Rect(start_Width, start_Height, end_Width - start_Width, end_Height - start_Height);
-        //原理：在生成新的图片时只生成制定的部分
-        Mat tmp_Mat = new Mat(src, rect);
+        //原理：在生成新的图片时只生成指定的部分
+        Mat tmp_Mat = new Mat(this.mat, rect);
         tmp_Mat.copyTo(result);
         return result;
     }

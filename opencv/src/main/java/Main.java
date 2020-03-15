@@ -35,7 +35,7 @@ public class Main {
         //System.out.println(ImageUtils.doOCR(filePath+"61.jpg"));*/
         ImageUtils imageUtils = new ImageUtils(filePath + fileName);
         imageUtils.medianBlur();
-        imageUtils.Canny();
+        imageUtils.canny();
         List< MatOfPoint> list= imageUtils.findContours();
         System.out.println(list.size());
     }

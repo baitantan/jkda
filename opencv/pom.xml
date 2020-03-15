@@ -104,13 +104,6 @@
 
 
 
-<dependency>
-    <groupId>com.opencv</groupId>
-    <artifactId>opencv</artifactId>
-    <version>4.2.0</version>
-    <scope>system</scope>
-    <systemPath>${project.basedir}/lib/opencv-420.jar</systemPath>
-</dependency>
 
 
     </dependencies>

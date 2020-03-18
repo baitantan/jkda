@@ -32,60 +32,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="259fb85b-1cd0-4f8a-aadc-8c51bd390d2b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jkda.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/opencv.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/opencv_420.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="259fb85b-1cd0-4f8a-aadc-8c51bd390d2b" name="Default Changelist" comment="调整一些配置">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/resources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/opencv/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/src/main/java/test/PhotoSpiltTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/src/main/java/test/PhotoSpiltTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/src/main/java/test/TestPhotoResize.java" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/src/main/java/test/TestPhotoResize.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/src/main/java/util/ImageUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/src/main/java/util/ImageUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/src/main/resources/log4j2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/src/main/resources/logback.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/src/main/resources/tessdata/chi_sim.traineddata" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/src/main/resources/tessdata/configs/alto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/src/main/resources/tessdata/configs/api_config" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/src/main/resources/tessdata/configs/bazaar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/src/main/resources/tessdata/configs/digits" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/src/main/resources/tessdata/configs/hocr" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/src/main/resources/tessdata/configs/lstmbox" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/src/main/resources/tessdata/configs/pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/src/main/resources/tessdata/configs/quiet" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/src/main/resources/tessdata/configs/tsv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/src/main/resources/tessdata/configs/txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/src/main/resources/tessdata/configs/unlv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/src/main/resources/tessdata/configs/wordstrbox" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/src/main/resources/tessdata/eng.traineddata" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/src/main/resources/tessdata/osd.traineddata" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/src/main/resources/tessdata/pdf.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/src/main/resources/win32-x86-64/libtesseract411.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/src/main/resources/win32-x86/libtesseract411.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/target/classes/log4j2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/target/classes/logback.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/target/classes/tessdata/chi_sim.traineddata" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/target/classes/tessdata/configs/alto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/target/classes/tessdata/configs/api_config" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/target/classes/tessdata/configs/bazaar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/target/classes/tessdata/configs/digits" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/target/classes/tessdata/configs/hocr" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/target/classes/tessdata/configs/lstmbox" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/target/classes/tessdata/configs/pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/target/classes/tessdata/configs/quiet" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/target/classes/tessdata/configs/tsv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/target/classes/tessdata/configs/txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/target/classes/tessdata/configs/unlv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/target/classes/tessdata/configs/wordstrbox" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/target/classes/tessdata/eng.traineddata" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/target/classes/tessdata/osd.traineddata" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/target/classes/tessdata/pdf.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/target/classes/util/ImageUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/target/classes/util/ImageUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/target/classes/win32-x86-64/libtesseract411.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/target/classes/win32-x86/libtesseract411.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/LeetCode/LeetCode/BianHaoZhuanHuan.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/LeetCode/LeetCode/Test.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -387,7 +336,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584254755237</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="调整一些配置">
+      <created>1584506952017</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1584506952017</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -410,7 +366,8 @@
     <MESSAGE value="It is not important too!" />
     <MESSAGE value="完成图片分割等的前期处理部分！" />
     <MESSAGE value="删除无用文件" />
-    <option name="LAST_COMMIT_MESSAGE" value="删除无用文件" />
+    <MESSAGE value="调整一些配置" />
+    <option name="LAST_COMMIT_MESSAGE" value="调整一些配置" />
   </component>
   <component name="WindowStateProjectService">
     <state x="344" y="42" key="#All_in_quickstart" timestamp="1581760241475">
@@ -451,25 +408,25 @@
     </state>
     <state x="458" y="146" key="FileChooserDialogImpl/0.0.1280.720@0.0.1280.720" timestamp="1584506878850" />
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1584254929683" />
-    <state width="1237" height="176" key="GridCell.Tab.0.bottom" timestamp="1584506890159">
+    <state width="1237" height="176" key="GridCell.Tab.0.bottom" timestamp="1584507188948">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state width="1237" height="176" key="GridCell.Tab.0.bottom/0.0.1280.720@0.0.1280.720" timestamp="1584506890159" />
+    <state width="1237" height="176" key="GridCell.Tab.0.bottom/0.0.1280.720@0.0.1280.720" timestamp="1584507188948" />
     <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584255569293" />
-    <state width="1237" height="176" key="GridCell.Tab.0.center" timestamp="1584506890159">
+    <state width="1237" height="176" key="GridCell.Tab.0.center" timestamp="1584507188948">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state width="1237" height="176" key="GridCell.Tab.0.center/0.0.1280.720@0.0.1280.720" timestamp="1584506890159" />
+    <state width="1237" height="176" key="GridCell.Tab.0.center/0.0.1280.720@0.0.1280.720" timestamp="1584507188948" />
     <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1584255569293" />
-    <state width="1237" height="176" key="GridCell.Tab.0.left" timestamp="1584506890159">
+    <state width="1237" height="176" key="GridCell.Tab.0.left" timestamp="1584507188948">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state width="1237" height="176" key="GridCell.Tab.0.left/0.0.1280.720@0.0.1280.720" timestamp="1584506890159" />
+    <state width="1237" height="176" key="GridCell.Tab.0.left/0.0.1280.720@0.0.1280.720" timestamp="1584507188948" />
     <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1584255569293" />
-    <state width="1237" height="176" key="GridCell.Tab.0.right" timestamp="1584506890159">
+    <state width="1237" height="176" key="GridCell.Tab.0.right" timestamp="1584507188948">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state width="1237" height="176" key="GridCell.Tab.0.right/0.0.1280.720@0.0.1280.720" timestamp="1584506890159" />
+    <state width="1237" height="176" key="GridCell.Tab.0.right/0.0.1280.720@0.0.1280.720" timestamp="1584507188948" />
     <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1584255569293" />
     <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1581850413656">
       <screen x="0" y="0" width="1536" height="824" />
@@ -491,6 +448,14 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="171" y="16" key="Maven.ArtifactSearchDialog/0.0.1280.720@0.0.1280.720" timestamp="1584502284935" />
+    <state x="122" y="55" key="MergeDialog" timestamp="1584507165664">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="122" y="55" key="MergeDialog/0.0.1280.720@0.0.1280.720" timestamp="1584507165664" />
+    <state x="352" y="71" key="MultipleFileMergeDialog" timestamp="1584507165664">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="352" y="71" key="MultipleFileMergeDialog/0.0.1280.720@0.0.1280.720" timestamp="1584507165664" />
     <state x="556" y="123" key="RollbackChangesDialog" timestamp="1584251292958">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -500,9 +465,10 @@
     </state>
     <state x="208" y="0" width="1003" height="707" key="SettingsEditor/0.0.1280.720@0.0.1280.720" timestamp="1584506884288" />
     <state x="249" y="0" width="1203" height="715" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1584255601363" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1584254781574">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="301" y="127" key="Vcs.Push.Dialog.v2" timestamp="1584507225515">
+      <screen x="0" y="0" width="1280" height="720" />
     </state>
+    <state x="301" y="127" key="Vcs.Push.Dialog.v2/0.0.1280.720@0.0.1280.720" timestamp="1584507225515" />
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1584254781574" />
     <state x="454" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1583322830528">
       <screen x="0" y="0" width="1536" height="824" />
@@ -520,6 +486,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="540" y="115" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1536.824@0.0.1536.824" timestamp="1581915406245" />
+    <state x="362" y="148" key="git4idea.merge.GitPullDialog" timestamp="1584507216201">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="362" y="148" key="git4idea.merge.GitPullDialog/0.0.1280.720@0.0.1280.720" timestamp="1584507216201" />
     <state x="178" y="107" key="new project wizard" timestamp="1582167771522">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

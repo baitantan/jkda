@@ -95,11 +95,18 @@
 
     <dependencies>
 
-        <!-- https://mvnrepository.com/artifact/net.sourceforge.tess4j/tess4j -->
+        <!--&lt;!&ndash; https://mvnrepository.com/artifact/net.sourceforge.tess4j/tess4j &ndash;&gt;
         <dependency>
             <groupId>net.sourceforge.tess4j</groupId>
             <artifactId>tess4j</artifactId>
             <version>4.5.1</version>
+        </dependency>-->
+        <dependency>
+            <groupId>org.opencv</groupId>
+            <artifactId>opencv</artifactId>
+            <version>4.2.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/opencv-420.jar</systemPath>
         </dependency>
 
 

@@ -101,6 +101,13 @@
             <artifactId>tess4j</artifactId>
             <version>4.5.1</version>
         </dependency>
+        <dependency>
+            <groupId>com.opencv</groupId>
+            <artifactId>opencv</artifactId>
+            <version>4.2.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/opencv-420.jar</systemPath>
+        </dependency>
 
 
 

@@ -10,14 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="259fb85b-1cd0-4f8a-aadc-8c51bd390d2b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jkda.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/opencv/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/target/classes/util/ImageUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/target/classes/util/ImageUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/target/maven-archiver/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/target/opencv-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LeetCode/LeetCode/BianHaoZhuanHuan.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LeetCode/LeetCode/Test.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,6 +113,7 @@
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
@@ -134,7 +133,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -461,10 +460,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="409" y="6" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1584254753550" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1584254929683">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="686" y="241" width="424" height="480" key="FileChooserDialogImpl" timestamp="1584529305030">
+      <screen x="0" y="28" width="1920" height="1052" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1584254929683" />
+    <state x="686" y="241" width="424" height="480" key="FileChooserDialogImpl/0.28.1920.1052@0.28.1920.1052" timestamp="1584529305030" />
     <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1584255569293">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -501,18 +501,21 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="556" y="123" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1584251292958" />
-    <state x="249" y="0" width="1203" height="715" key="SettingsEditor" timestamp="1584255601363">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="311" y="54" width="1024" height="841" key="SettingsEditor" timestamp="1584529468958">
+      <screen x="0" y="28" width="1920" height="1052" />
     </state>
     <state x="249" y="0" width="1203" height="715" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1584255601363" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1584254781574">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="311" y="54" width="1024" height="841" key="SettingsEditor/0.28.1920.1052@0.28.1920.1052" timestamp="1584529468958" />
+    <state x="451" y="213" width="800" height="527" key="Vcs.Push.Dialog.v2" timestamp="1584529488087">
+      <screen x="0" y="28" width="1920" height="1052" />
     </state>
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1584254781574" />
-    <state x="454" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1583322830528">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="451" y="213" width="800" height="527" key="Vcs.Push.Dialog.v2/0.28.1920.1052@0.28.1920.1052" timestamp="1584529488087" />
+    <state x="568" y="329" key="com.intellij.ide.util.TipDialog" timestamp="1584528652683">
+      <screen x="0" y="28" width="1920" height="1052" />
     </state>
     <state x="454" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1583322830528" />
+    <state x="568" y="329" key="com.intellij.ide.util.TipDialog/0.28.1920.1052@0.28.1920.1052" timestamp="1584528652683" />
     <state x="419" y="92" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1581915162730">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

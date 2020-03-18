@@ -101,20 +101,6 @@
             <artifactId>tess4j</artifactId>
             <version>4.5.1</version>
         </dependency>
-        <dependency>
-            <groupId>org.opencv</groupId>
-            <artifactId>opencv</artifactId>
-            <version>4.2.0</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/opencv-420.jar</systemPath>
-        </dependency>
-        <!--&lt;!&ndash; https://mvnrepository.com/artifact/com.google.guava/guava &ndash;&gt;
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>28.2-jre</version>
-        </dependency>-->
-
 
 
 

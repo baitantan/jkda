@@ -50,6 +50,8 @@ public class ImageUtils {
     public static final int NUMBER_START_WIDTH = 290*  i;
     public static final int NUMBER_END_WIDTH = 775*  i;
 
+    public static final String INPUT_FILE_PATH = "D:\\photo\\";
+    public static final String OUTPUT_FILE_PATH = "D:\\out\\";
     private Mat mat;
 
     /**

@@ -8,16 +8,84 @@
       <artifact name="jkda:war" />
     </artifacts-to-build>
   </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:jkda" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="259fb85b-1cd0-4f8a-aadc-8c51bd390d2b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jkda.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/opencv.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/opencv_420.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/opencv/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/src/main/java/test/PhotoSpiltTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/src/main/java/test/PhotoSpiltTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/src/main/java/test/TestPhotoResize.java" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/src/main/java/test/TestPhotoResize.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/src/main/java/util/ImageUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/src/main/java/util/ImageUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/src/main/resources/log4j2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/src/main/resources/logback.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/src/main/resources/tessdata/chi_sim.traineddata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/src/main/resources/tessdata/configs/alto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/src/main/resources/tessdata/configs/api_config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/src/main/resources/tessdata/configs/bazaar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/src/main/resources/tessdata/configs/digits" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/src/main/resources/tessdata/configs/hocr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/src/main/resources/tessdata/configs/lstmbox" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/src/main/resources/tessdata/configs/pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/src/main/resources/tessdata/configs/quiet" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/src/main/resources/tessdata/configs/tsv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/src/main/resources/tessdata/configs/txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/src/main/resources/tessdata/configs/unlv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/src/main/resources/tessdata/configs/wordstrbox" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/src/main/resources/tessdata/eng.traineddata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/src/main/resources/tessdata/osd.traineddata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/src/main/resources/tessdata/pdf.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/src/main/resources/win32-x86-64/libtesseract411.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/src/main/resources/win32-x86/libtesseract411.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/target/classes/log4j2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/target/classes/logback.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/target/classes/tessdata/chi_sim.traineddata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/target/classes/tessdata/configs/alto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/target/classes/tessdata/configs/api_config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/target/classes/tessdata/configs/bazaar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/target/classes/tessdata/configs/digits" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/target/classes/tessdata/configs/hocr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/target/classes/tessdata/configs/lstmbox" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/target/classes/tessdata/configs/pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/target/classes/tessdata/configs/quiet" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/target/classes/tessdata/configs/tsv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/target/classes/tessdata/configs/txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/target/classes/tessdata/configs/unlv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/target/classes/tessdata/configs/wordstrbox" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/target/classes/tessdata/eng.traineddata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/target/classes/tessdata/osd.traineddata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/target/classes/tessdata/pdf.ttf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/opencv/target/classes/util/ImageUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/target/classes/util/ImageUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/target/maven-archiver/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv/target/opencv-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/target/classes/win32-x86-64/libtesseract411.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/target/classes/win32-x86/libtesseract411.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LeetCode/LeetCode/BianHaoZhuanHuan.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LeetCode/LeetCode/Test.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,32 +164,25 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="importAutomatically" value="true" />
-      </MavenImportingSettings>
-    </option>
-  </component>
   <component name="ProjectId" id="1Xpwr6SEtIQxlBkM2OjPS6xwn2R" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="database.console.LAST_STATE" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/opencv/lib" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/opencv/src/main/resources" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -134,12 +195,25 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
       <recent name="com.cs.util" />
       <recent name="util" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\project\jkda\opencv\src\main\resources" />
+      <recent name="D:\project\jkda\opencv\src\main\resources\photo" />
+      <recent name="D:\project\IDEAProject\jkda\opencv\src\main\resources" />
+      <recent name="D:\project\IDEAProject\jkda\opencv\lib" />
+      <recent name="D:\project\IDEAProject\jkda\jkda\src\main\test\resources" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\project\IDEAProject\jkda\opencv\src\main\java" />
@@ -148,28 +222,10 @@
       <recent name="D:\project\IDEAProject\jkda\jkda\src\main\java\core\dao" />
       <recent name="D:\project\IDEAProject\jkda\jkda\src\main\webapp\WEB-INF\jsp" />
     </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\project\IDEAProject\jkda\opencv\src\main\resources" />
-      <recent name="D:\project\IDEAProject\jkda\opencv\lib" />
-      <recent name="D:\project\IDEAProject\jkda\jkda\src\main\test\resources" />
-    </key>
   </component>
-  <component name="RunManager" selected="Application.TestPreProcess">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="opencv" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="OpenCVJavaTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="OpenCVJavaTest" />
       <module name="opencv" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -240,81 +296,7 @@
       </MavenSettings>
       <method v="2" />
     </configuration>
-    <configuration name="Tomcat Local" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.22" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/jkda_war/" />
-      <option name="UPDATING_POLICY" value="restart-server" />
-      <deployment>
-        <artifact name="jkda:war">
-          <settings>
-            <option name="CONTEXT_PATH" value="/jkda_war" />
-          </settings>
-        </artifact>
-      </deployment>
-      <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="Unnamed_jkda" />
-      </server-settings>
-      <predefined_log_file enabled="true" id="Tomcat" />
-      <predefined_log_file enabled="true" id="Tomcat Catalina" />
-      <predefined_log_file id="Tomcat Manager" />
-      <predefined_log_file id="Tomcat Host Manager" />
-      <predefined_log_file id="Tomcat Localhost Access" />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="51420" />
-      </RunnerSettings>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <method v="2">
-        <option name="Make" enabled="true" />
-        <option name="BuildArtifacts" enabled="true">
-          <artifact name="jkda:war" />
-        </option>
-      </method>
-    </configuration>
     <list>
-      <item itemvalue="Application.OpenCVJavaTest" />
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.TestPhotoResize" />
       <item itemvalue="Application.PhotoSpiltTest" />
@@ -323,25 +305,12 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TestPreProcess" />
-        <item itemvalue="Application.PhotoSpiltTest" />
         <item itemvalue="Application.TestPhotoResize" />
+        <item itemvalue="Application.PhotoSpiltTest" />
+        <item itemvalue="Application.TestPreProcess" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.OpenCVJavaTest" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
   </component>
   <component name="SpringGeneralSettings">
     <option name="allowAutoConfigurationMode" value="true" />
@@ -429,13 +398,12 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="It is not important!" />
@@ -449,37 +417,59 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="344" y="42" key="#All_in_quickstart/0.0.1536.824@0.0.1536.824" timestamp="1581760241475" />
+    <state x="96" y="16" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584506904855">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="96" y="16" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.720@0.0.1280.720" timestamp="1584506904855" />
+    <state x="421" y="66" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1584504427669">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="421" y="66" key="#com.intellij.ide.macro.MacrosDialog/0.0.1280.720@0.0.1280.720" timestamp="1584504427669" />
     <state x="574" y="122" key="#com.intellij.ide.util.MemberChooser" timestamp="1581915355048">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="574" y="122" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1581915355048" />
-    <state x="548" y="271" width="439" height="291" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1582082147021">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="540" y="65" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog" timestamp="1584506880725">
+      <screen x="0" y="0" width="1280" height="720" />
     </state>
+    <state x="540" y="65" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog/0.0.1280.720@0.0.1280.720" timestamp="1584506880725" />
+    <state x="457" y="237" width="443" height="255" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1584504183785">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="457" y="237" width="443" height="255" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.720@0.0.1280.720" timestamp="1584504183785" />
     <state x="548" y="271" width="439" height="291" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1582082147021" />
+    <state x="440" y="109" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog" timestamp="1584506882303">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="440" y="109" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/0.0.1280.720@0.0.1280.720" timestamp="1584506882303" />
     <state x="409" y="6" key="CommitChangelistDialog2" timestamp="1584254753550">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="409" y="6" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1584254753550" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1584254929683">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="458" y="146" key="FileChooserDialogImpl" timestamp="1584506878850">
+      <screen x="0" y="0" width="1280" height="720" />
     </state>
+    <state x="458" y="146" key="FileChooserDialogImpl/0.0.1280.720@0.0.1280.720" timestamp="1584506878850" />
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1584254929683" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1584255569293">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1237" height="176" key="GridCell.Tab.0.bottom" timestamp="1584506890159">
+      <screen x="0" y="0" width="1280" height="720" />
     </state>
+    <state width="1237" height="176" key="GridCell.Tab.0.bottom/0.0.1280.720@0.0.1280.720" timestamp="1584506890159" />
     <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584255569293" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1584255569293">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1237" height="176" key="GridCell.Tab.0.center" timestamp="1584506890159">
+      <screen x="0" y="0" width="1280" height="720" />
     </state>
+    <state width="1237" height="176" key="GridCell.Tab.0.center/0.0.1280.720@0.0.1280.720" timestamp="1584506890159" />
     <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1584255569293" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1584255569293">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1237" height="176" key="GridCell.Tab.0.left" timestamp="1584506890159">
+      <screen x="0" y="0" width="1280" height="720" />
     </state>
+    <state width="1237" height="176" key="GridCell.Tab.0.left/0.0.1280.720@0.0.1280.720" timestamp="1584506890159" />
     <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1584255569293" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1584255569293">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1237" height="176" key="GridCell.Tab.0.right" timestamp="1584506890159">
+      <screen x="0" y="0" width="1280" height="720" />
     </state>
+    <state width="1237" height="176" key="GridCell.Tab.0.right/0.0.1280.720@0.0.1280.720" timestamp="1584506890159" />
     <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1584255569293" />
     <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1581850413656">
       <screen x="0" y="0" width="1536" height="824" />
@@ -497,13 +487,18 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1581850413656" />
+    <state x="171" y="16" key="Maven.ArtifactSearchDialog" timestamp="1584502284935">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="171" y="16" key="Maven.ArtifactSearchDialog/0.0.1280.720@0.0.1280.720" timestamp="1584502284935" />
     <state x="556" y="123" key="RollbackChangesDialog" timestamp="1584251292958">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="556" y="123" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1584251292958" />
-    <state x="249" y="0" width="1203" height="715" key="SettingsEditor" timestamp="1584255601363">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="208" y="0" width="1003" height="707" key="SettingsEditor" timestamp="1584506884288">
+      <screen x="0" y="0" width="1280" height="720" />
     </state>
+    <state x="208" y="0" width="1003" height="707" key="SettingsEditor/0.0.1280.720@0.0.1280.720" timestamp="1584506884288" />
     <state x="249" y="0" width="1203" height="715" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1584255601363" />
     <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1584254781574">
       <screen x="0" y="0" width="1536" height="824" />
@@ -529,9 +524,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="178" y="107" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1582167771522" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1584252399789">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="359" y="127" width="672" height="593" key="search.everywhere.popup" timestamp="1584505975726">
+      <screen x="0" y="0" width="1280" height="720" />
     </state>
+    <state x="359" y="127" width="672" height="593" key="search.everywhere.popup/0.0.1280.720@0.0.1280.720" timestamp="1584505975726" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1584252399789" />
   </component>
 </project>

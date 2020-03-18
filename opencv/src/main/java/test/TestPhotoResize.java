@@ -8,8 +8,8 @@ public class TestPhotoResize {
 
     public static void main(String[] args) {
         ImageUtils imageUtils = new ImageUtils();
-        imageUtils.loadImg("D:\\project\\tesseract\\OpenCVTest\\111.jpg");
+        imageUtils.loadImg(ImageUtils.INPUT_FILE_PATH+"111.jpg");
         imageUtils.photoResize();
-        imageUtils.saveImg("D:\\project\\tesseract\\OpenCVTest\\TestPhotoResize.jpg");
+        imageUtils.saveImg(ImageUtils.OUTPUT_FILE_PATH+"TestPhotoResize.jpg");
     }
 }

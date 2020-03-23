@@ -56,6 +56,9 @@ public class ImageUtils {
     public static final int MIN_WIDTH = 39;
     //最小间距，间距小于这个的视为一个汉字
     public static final int MIN_SPACE = 7;
+    //姓名宽度
+    public static final int NAME_MIN_WIDTH = 25 * i;
+    public static final int NAME_MAX_WIDTH = 45 * i;
 
     public static final String INPUT_FILE_PATH = "D:\\photo\\";
     public static final String OUTPUT_FILE_PATH = "D:\\out\\";
@@ -431,7 +434,11 @@ public class ImageUtils {
         return result;
     }
 
-
+    /**
+     * 对输入的图片进行字符分割，行分割和列分割，适用于住址，身份证号，民族部分
+     * @param src 待处理的图片
+     * @return 分割完毕的图片集合
+     */
     public static List<Mat> addressCharacterSplit(Mat src){
         ArrayList<Mat> result = new ArrayList<>();
         List<Mat> rows = new LinkedList<>();
@@ -546,8 +553,96 @@ public class ImageUtils {
         return result;
     }
 
+    /**
+     * 适用于姓名部分的图片分割（字符更大）
+     * @param src 待处理的图片
+     * @return 结果
+     */
+    public static List<Mat> nameCharacterSpilt(Mat src){
+        List<Mat> result = new ArrayList<>();
+        int height = src.rows();
+        int width = src.cols();
+        int startHeight = -1, endHeight = -1;
+        for (int i=0;i < height;i++){
+            for (int j = 0;j< width;j++){
+                if (src.get(i ,j)[0] == BLACK){
+                    startHeight = i;
+                    break;
+                }
+                if (startHeight > -1){
+                    break;
+                }
+            }
+        }
+        for (int i=height - 1;i >= 0;i--){
+            for (int j = 0;j< width;j++){
+                if (src.get(i ,j)[0] == BLACK){
+                    endHeight = i;
+                    break;
+                }
+                if (endHeight > -1){
+                    break;
+                }
+            }
+        }
+        Mat m = new Mat(src,new Rect(0 , startHeight , width , endHeight - startHeight+1));
+        int mHeight = m.rows();
+        int mWidth = m.cols();
+        int[] widthNumbers = new  int[mWidth];
+        for (int i = 0;i<mWidth;i++){
+            for (int j=0;j<mHeight;j++){
+                if (m.get(j,i)[0]==BLACK){
+                    widthNumbers[i]++;
+                }
+            }
+        }
+
+        //记录黑色像素跃变的位置
+        int[] a = new int[20];
+        int k = 0;
+        boolean mflag = false;
+        for (int i = 0; i < mWidth; i++) {
+            if (mflag != (widthNumbers[i] > 0)){
+                mflag = !mflag;
+                a[k++] = i;
+            }
+        }
+        //最后一列也是黑色像素的情况下
+        if (mflag){
+            a[k++] = mWidth;
+        }
+        for (int i = 0; i < k ; i += 2){
+            int start = i;
+            int end = i+1;
+            //姓名中可能出现二根字，三根字等，
+            //姓名中不可能有数字
+            while (a[end] - a[start] <= NAME_MIN_WIDTH && i < k-2){
+                i+=2;
+                end+=2;
+            }
+            if (a[end] - a[start] > NAME_MAX_WIDTH){
+                int i1 = (a[end] - a[start]) / 2;
+                result.add(new Mat(m, new Rect(a[start] , 0 , i1, mHeight)));
+                result.add(new Mat(m, new Rect(a[start] + i1, 0 , i1, mHeight)));
+            }
+            result.add(new Mat(m, new Rect(a[start] , 0 ,a[end] - a[start] , mHeight)));
+                /*for (int s = 0;s < mWidth ; s++){
+                    src.put(s , a[start] , BLACK);
+                    src.put(s , a[end - 1], BLACK);
+                }*/
+        }
+        return result;
+    }
+    /**
+     * 对自身的mat进行分割
+     * @return 结果集
+     */
     public List<Mat> addressCharacterSplit(){
         return addressCharacterSplit(this.mat);
+    }
+
+    public List<Mat> nameCharacterSplit(){
+        return nameCharacterSpilt(this.mat);
     }
 
 }

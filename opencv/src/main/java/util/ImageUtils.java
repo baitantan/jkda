@@ -63,8 +63,8 @@ public class ImageUtils {
     public static final String INPUT_FILE_PATH = "D:\\photo\\";
     public static final String OUTPUT_FILE_PATH = "D:\\out\\";
     private Mat mat;
-
     public static final Gson gson = new Gson();
+    public static final int OFFSET = 20;
 
     /**
      * 空参构造函数
@@ -214,7 +214,7 @@ public class ImageUtils {
         }
 
 
-        return ucThre_new;
+        return ucThre_new - OFFSET;
 
     }
 
@@ -439,7 +439,7 @@ public class ImageUtils {
      * @param src 待处理的图片
      * @return 分割完毕的图片集合
      */
-    public static List<Mat> addressCharacterSplit(Mat src){
+    public static List<Mat> characterSplit(Mat src){
         ArrayList<Mat> result = new ArrayList<>();
         List<Mat> rows = new LinkedList<>();
         int height = src.rows();
@@ -569,9 +569,10 @@ public class ImageUtils {
                     startHeight = i;
                     break;
                 }
-                if (startHeight > -1){
-                    break;
-                }
+
+            }
+            if (startHeight > -1){
+                break;
             }
         }
         for (int i=height - 1;i >= 0;i--){
@@ -580,9 +581,10 @@ public class ImageUtils {
                     endHeight = i;
                     break;
                 }
-                if (endHeight > -1){
-                    break;
-                }
+
+            }
+            if (endHeight > -1){
+                break;
             }
         }
         Mat m = new Mat(src,new Rect(0 , startHeight , width , endHeight - startHeight+1));
@@ -633,16 +635,82 @@ public class ImageUtils {
         }
         return result;
     }
+    public static List<Mat> numberCharacterSpilt(Mat src){
+        List<Mat> result = new ArrayList<>();
+        int height = src.rows();
+        int width = src.cols();
+        int startHeight = -1, endHeight = -1;
+        //寻找上面的起点
+        for (int i=0;i < height;i++){
+            for (int j = 0;j< width;j++){
+                if (src.get(i ,j)[0] == BLACK){
+                    startHeight = i;
+                    break;
+                }
+            }
+            if (startHeight > -1){
+                break;
+            }
+        }
+        //寻找下面的终点
+        for (int i=height - 1;i >= 0;i--){
+            for (int j = 0;j< width;j++){
+                if (src.get(i ,j)[0] == BLACK){
+                    endHeight = i;
+                    break;
+                }
+            }
+            if (endHeight > -1){
+                break;
+            }
+        }
+
+        int[] widthNumbers = new  int[width];
+        for (int i = 0;i<width;i++){
+            for (int j=startHeight;j<endHeight;j++){
+                if (src.get(j,i)[0]==BLACK){
+                    widthNumbers[i]++;
+                }
+            }
+        }
+
+        //记录黑色像素跃变的位置
+        int[] a = new int[40];
+        int k = 0;
+        boolean mflag = false;
+        for (int i = 0; i < width; i++) {
+            if (mflag != (widthNumbers[i] > 0)){
+                mflag = !mflag;
+                a[k++] = i;
+            }
+        }
+        //最后一列也是黑色像素的情况下
+        if (mflag){
+            a[k++] = width;
+        }
+        for (int i = 0; i < k ; i += 2) {
+        //身份证号中不存在二根字、三根字
+            result.add(new Mat(src, new Rect(a[i] , startHeight ,
+                    a[i+1] - a[i] , endHeight - startHeight)));
+        }
+        return result;
+    }
+
+
     /**
      * 对自身的mat进行分割
      * @return 结果集
      */
     public List<Mat> addressCharacterSplit(){
-        return addressCharacterSplit(this.mat);
+        return characterSplit(this.mat);
     }
 
     public List<Mat> nameCharacterSplit(){
         return nameCharacterSpilt(this.mat);
     }
+
+    public List<Mat> numberCharacterSpilt(){return numberCharacterSpilt(this.mat);}
+
+    public List<Mat> nationCharacterSpilt(){return characterSplit(this.mat);}
 
 }

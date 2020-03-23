@@ -32,9 +32,18 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="259fb85b-1cd0-4f8a-aadc-8c51bd390d2b" name="Default Changelist" comment="调整一些配置">
+    <list default="true" id="259fb85b-1cd0-4f8a-aadc-8c51bd390d2b" name="Default Changelist" comment="删除了一些无用的配置">
       <change afterPath="$PROJECT_DIR$/.idea/libraries/resources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/opencv/src/main/java/ddd.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/opencv/src/main/java/test/CharacterSpiltTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/opencv/src/main/java/test/RowSpiltTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/opencv/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/src/main/java/OpenCVJavaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/src/main/java/OpenCVJavaTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/src/main/java/TesseractTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/src/main/java/Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/src/main/java/util/ImageUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/src/main/java/util/ImageUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,16 +181,35 @@
       <recent name="D:\project\IDEAProject\jkda\jkda\src\main\webapp\WEB-INF\jsp" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
+  <component name="RunManager" selected="Application.CharacterSpiltTest">
+    <configuration name="CharacterSpiltTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="test.CharacterSpiltTest" />
       <module name="opencv" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="PhotoSpiltTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="test.PhotoSpiltTest" />
+      <module name="opencv" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RowSpiltTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="test.RowSpiltTest" />
       <module name="opencv" />
       <extension name="coverage">
         <pattern>
@@ -206,15 +234,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestPreProcess" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="test.TestPreProcess" />
+    <configuration name="ddd" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ddd" />
       <module name="opencv" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -246,18 +268,20 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Application.Main" />
-      <item itemvalue="Application.TestPhotoResize" />
       <item itemvalue="Application.PhotoSpiltTest" />
-      <item itemvalue="Application.TestPreProcess" />
+      <item itemvalue="Application.TestPhotoResize" />
+      <item itemvalue="Application.ddd" />
+      <item itemvalue="Application.RowSpiltTest" />
+      <item itemvalue="Application.CharacterSpiltTest" />
       <item itemvalue="Maven.jkda [mybatis-generator:generate,-e]" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.CharacterSpiltTest" />
+        <item itemvalue="Application.RowSpiltTest" />
+        <item itemvalue="Application.ddd" />
         <item itemvalue="Application.TestPhotoResize" />
         <item itemvalue="Application.PhotoSpiltTest" />
-        <item itemvalue="Application.TestPreProcess" />
-        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -343,7 +367,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584506952017</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="删除了一些无用的配置">
+      <created>1584507392024</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1584507392024</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -367,13 +398,18 @@
     <MESSAGE value="完成图片分割等的前期处理部分！" />
     <MESSAGE value="删除无用文件" />
     <MESSAGE value="调整一些配置" />
-    <option name="LAST_COMMIT_MESSAGE" value="调整一些配置" />
+    <MESSAGE value="删除了一些无用的配置" />
+    <option name="LAST_COMMIT_MESSAGE" value="删除了一些无用的配置" />
   </component>
   <component name="WindowStateProjectService">
     <state x="344" y="42" key="#All_in_quickstart" timestamp="1581760241475">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="344" y="42" key="#All_in_quickstart/0.0.1536.824@0.0.1536.824" timestamp="1581760241475" />
+    <state x="233" y="0" key="#Plugins" timestamp="1584757908014">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="233" y="0" key="#Plugins/0.0.1280.689@0.0.1280.689" timestamp="1584757908014" />
     <state x="96" y="16" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584506904855">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
@@ -386,10 +422,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="574" y="122" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1581915355048" />
-    <state x="540" y="65" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog" timestamp="1584506880725">
+    <state x="540" y="65" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog" timestamp="1584507353660">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="540" y="65" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog/0.0.1280.720@0.0.1280.720" timestamp="1584506880725" />
+    <state x="540" y="65" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog/0.0.1280.720@0.0.1280.720" timestamp="1584507353660" />
+    <state x="321" y="80" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1584757606252">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="321" y="80" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1280.689@0.0.1280.689" timestamp="1584757606252" />
     <state x="457" y="237" width="443" height="255" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1584504183785">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
@@ -403,46 +443,58 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="409" y="6" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1584254753550" />
+    <state width="469" height="438" key="DebuggerActiveHint" timestamp="1584935494818">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="469" height="438" key="DebuggerActiveHint/0.0.1280.689@0.0.1280.689" timestamp="1584935494818" />
     <state x="458" y="146" key="FileChooserDialogImpl" timestamp="1584506878850">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="458" y="146" key="FileChooserDialogImpl/0.0.1280.720@0.0.1280.720" timestamp="1584506878850" />
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1584254929683" />
-    <state width="1237" height="176" key="GridCell.Tab.0.bottom" timestamp="1584507188948">
-      <screen x="0" y="0" width="1280" height="720" />
+    <state width="1237" height="166" key="GridCell.Tab.0.bottom" timestamp="1584935947495">
+      <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="176" key="GridCell.Tab.0.bottom/0.0.1280.720@0.0.1280.720" timestamp="1584507188948" />
+    <state width="1237" height="166" key="GridCell.Tab.0.bottom/0.0.1280.689@0.0.1280.689" timestamp="1584935947495" />
+    <state width="1237" height="176" key="GridCell.Tab.0.bottom/0.0.1280.720@0.0.1280.720" timestamp="1584507455904" />
     <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584255569293" />
-    <state width="1237" height="176" key="GridCell.Tab.0.center" timestamp="1584507188948">
-      <screen x="0" y="0" width="1280" height="720" />
+    <state width="1237" height="166" key="GridCell.Tab.0.center" timestamp="1584935947495">
+      <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="176" key="GridCell.Tab.0.center/0.0.1280.720@0.0.1280.720" timestamp="1584507188948" />
+    <state width="1237" height="166" key="GridCell.Tab.0.center/0.0.1280.689@0.0.1280.689" timestamp="1584935947495" />
+    <state width="1237" height="176" key="GridCell.Tab.0.center/0.0.1280.720@0.0.1280.720" timestamp="1584507455904" />
     <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1584255569293" />
-    <state width="1237" height="176" key="GridCell.Tab.0.left" timestamp="1584507188948">
-      <screen x="0" y="0" width="1280" height="720" />
+    <state width="1237" height="166" key="GridCell.Tab.0.left" timestamp="1584935947495">
+      <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="176" key="GridCell.Tab.0.left/0.0.1280.720@0.0.1280.720" timestamp="1584507188948" />
+    <state width="1237" height="166" key="GridCell.Tab.0.left/0.0.1280.689@0.0.1280.689" timestamp="1584935947495" />
+    <state width="1237" height="176" key="GridCell.Tab.0.left/0.0.1280.720@0.0.1280.720" timestamp="1584507455904" />
     <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1584255569293" />
-    <state width="1237" height="176" key="GridCell.Tab.0.right" timestamp="1584507188948">
-      <screen x="0" y="0" width="1280" height="720" />
+    <state width="1237" height="166" key="GridCell.Tab.0.right" timestamp="1584935947495">
+      <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="176" key="GridCell.Tab.0.right/0.0.1280.720@0.0.1280.720" timestamp="1584507188948" />
+    <state width="1237" height="166" key="GridCell.Tab.0.right/0.0.1280.689@0.0.1280.689" timestamp="1584935947495" />
+    <state width="1237" height="176" key="GridCell.Tab.0.right/0.0.1280.720@0.0.1280.720" timestamp="1584507455904" />
     <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1584255569293" />
-    <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1581850413656">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1237" height="208" key="GridCell.Tab.1.bottom" timestamp="1584935585548">
+      <screen x="0" y="0" width="1280" height="689" />
     </state>
+    <state width="1237" height="208" key="GridCell.Tab.1.bottom/0.0.1280.689@0.0.1280.689" timestamp="1584935585548" />
     <state width="1493" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1581850413656" />
-    <state width="1493" height="261" key="GridCell.Tab.1.center" timestamp="1581850413656">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1237" height="208" key="GridCell.Tab.1.center" timestamp="1584935585548">
+      <screen x="0" y="0" width="1280" height="689" />
     </state>
+    <state width="1237" height="208" key="GridCell.Tab.1.center/0.0.1280.689@0.0.1280.689" timestamp="1584935585548" />
     <state width="1493" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1581850413656" />
-    <state width="1493" height="261" key="GridCell.Tab.1.left" timestamp="1581850413655">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1237" height="208" key="GridCell.Tab.1.left" timestamp="1584935585548">
+      <screen x="0" y="0" width="1280" height="689" />
     </state>
+    <state width="1237" height="208" key="GridCell.Tab.1.left/0.0.1280.689@0.0.1280.689" timestamp="1584935585548" />
     <state width="1493" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1581850413655" />
-    <state width="1493" height="261" key="GridCell.Tab.1.right" timestamp="1581850413656">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1237" height="208" key="GridCell.Tab.1.right" timestamp="1584935585548">
+      <screen x="0" y="0" width="1280" height="689" />
     </state>
+    <state width="1237" height="208" key="GridCell.Tab.1.right/0.0.1280.689@0.0.1280.689" timestamp="1584935585548" />
     <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1581850413656" />
     <state x="171" y="16" key="Maven.ArtifactSearchDialog" timestamp="1584502284935">
       <screen x="0" y="0" width="1280" height="720" />
@@ -460,15 +512,15 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="556" y="123" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1584251292958" />
-    <state x="208" y="0" width="1003" height="707" key="SettingsEditor" timestamp="1584506884288">
+    <state x="208" y="0" width="1003" height="707" key="SettingsEditor" timestamp="1584507354645">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="208" y="0" width="1003" height="707" key="SettingsEditor/0.0.1280.720@0.0.1280.720" timestamp="1584506884288" />
+    <state x="208" y="0" width="1003" height="707" key="SettingsEditor/0.0.1280.720@0.0.1280.720" timestamp="1584507354645" />
     <state x="249" y="0" width="1203" height="715" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1584255601363" />
-    <state x="301" y="127" key="Vcs.Push.Dialog.v2" timestamp="1584507225515">
+    <state x="301" y="127" key="Vcs.Push.Dialog.v2" timestamp="1584507519914">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="301" y="127" key="Vcs.Push.Dialog.v2/0.0.1280.720@0.0.1280.720" timestamp="1584507225515" />
+    <state x="301" y="127" key="Vcs.Push.Dialog.v2/0.0.1280.720@0.0.1280.720" timestamp="1584507519914" />
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1584254781574" />
     <state x="454" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1583322830528">
       <screen x="0" y="0" width="1536" height="824" />
@@ -499,5 +551,16 @@
     </state>
     <state x="359" y="127" width="672" height="593" key="search.everywhere.popup/0.0.1280.720@0.0.1280.720" timestamp="1584505975726" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1584252399789" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/opencv/src/main/java/util/ImageUtils.java</url>
+          <line>516</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

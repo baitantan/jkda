@@ -1,13 +1,12 @@
 package util;
 
-import net.sourceforge.tess4j.Tesseract;
-import net.sourceforge.tess4j.TesseractException;
+import com.google.gson.Gson;
 import org.opencv.core.*;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 
-import java.io.File;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 
@@ -49,10 +48,20 @@ public class ImageUtils {
     public static final int NUMBER_END_HEIGHT = 490*  i;
     public static final int NUMBER_START_WIDTH = 290*  i;
     public static final int NUMBER_END_WIDTH = 775*  i;
+    //除了姓名 其他字符最大高度等
+    public static final int MAX_HEIGHT = 31 * i;
+    public static final int MAX_WIDTH = 30 * i;
+
+    public static final int MIN_HEIGHT = 23 * i;
+    public static final int MIN_WIDTH = 39;
+    //最小间距，间距小于这个的视为一个汉字
+    public static final int MIN_SPACE = 7;
 
     public static final String INPUT_FILE_PATH = "D:\\photo\\";
     public static final String OUTPUT_FILE_PATH = "D:\\out\\";
     private Mat mat;
+
+    public static final Gson gson = new Gson();
 
     /**
      * 空参构造函数
@@ -347,24 +356,6 @@ public class ImageUtils {
     }
 
 
-    /**
-     * doOCR
-     */
-    public static String doOCR(String fileName){
-        Tesseract tesseract = new Tesseract();
-        tesseract.setDatapath("D:\\project\\IDEAProject\\jkda\\opencv\\src\\main\\resources\\tessdata");
-        tesseract.setLanguage("chi_sim");
-
-        try {
-
-            return tesseract.doOCR(new File(fileName));
-
-        }catch (TesseractException e){
-            System.err.print(e.getMessage());
-        }
-        return null;
-    }
-
 
 
     /**
@@ -439,4 +430,124 @@ public class ImageUtils {
         tmp_Mat.copyTo(result);
         return result;
     }
+
+
+    public static List<Mat> addressCharacterSplit(Mat src){
+        ArrayList<Mat> result = new ArrayList<>();
+        List<Mat> rows = new LinkedList<>();
+        int height = src.rows();
+        int[] heightNumbers = new int[height];
+        int width = src.cols();
+        //int[] widthNumbers = new int[width];
+        //先进行行分割
+        //先统计每一行的黑色像素数目
+        for (int i = 0; i < height; i++){
+            for (int j = 0; j < width; j++){
+                if (src.get(i, j)[0] == 0){
+                    heightNumbers[i]++;
+                }
+            }
+        }
+        //记录黑色像素跃变的位置
+        int[] a = new int[height];
+        int j = 0;
+        boolean flag = false;
+        for (int i = 0; i < height; i++) {
+            if (flag != heightNumbers[i] > 0){
+                flag = !flag;
+                a[j++] = i;
+            }
+        }
+        //最后一行也是黑色像素的情况下
+        if (flag){
+            a[j++] = height;
+        }
+        //判断每一行文字的高度是否符合要求
+        for (int i = 0; i < j ; i += 2) {
+            int start = a[i];
+            int end = a[i + 1];
+            //高度小于最低要求
+            while (end - start <= MIN_HEIGHT && i < j - 2) {
+                i += 2;
+                end = a[i + 1];
+            }
+                rows.add(new Mat(src, new Rect(0, start, width, end - start)));
+                //为分割点添加横线
+                /*for (int s = 0;s < width ; s++){
+                    src.put(start , s , BLACK);
+                    src.put(end-1 ,s , BLACK);
+                }*/
+
+        }
+        /*System.out.println(rows.size());
+        Imgcodecs.imwrite(OUTPUT_FILE_PATH + "111.jpg",rows.get(0));
+        Imgcodecs.imwrite(OUTPUT_FILE_PATH + "222.jpg",rows.get(1));*/
+
+        for (Mat m : rows){
+            int mHeight = m.rows();
+            int mWidth = m.cols();
+            int[] widthNumbers = new  int[mWidth];
+            for (int i = 0;i<mWidth;i++){
+                for (j=0;j<mHeight;j++){
+                    if (m.get(j,i)[0]==BLACK){
+                        widthNumbers[i]++;
+                    }
+                }
+            }
+
+            //记录黑色像素跃变的位置
+            a = new int[50];
+            int k = 0;
+            boolean mflag = false;
+            for (int i = 0; i < mWidth; i++) {
+                if (mflag != (widthNumbers[i] > 0)){
+                    mflag = !mflag;
+                    a[k++] = i;
+                }
+            }
+            //最后一列也是黑色像素的情况下
+            if (mflag){
+                a[k++] = mWidth;
+            }
+            for (int i = 0; i < k ; i += 2){
+                int start = i;
+                int end = i+1;
+                //地址中可能出现数字，二根字，三根字等，
+                // 都需要判断是否是数字需要判断它和前后的字符的距离，两个字符之间的距离较大
+                while (a[end] - a[start] <= MIN_WIDTH && i < k-2){
+                    //第一个有可能是偏旁
+                    if (start == 0){
+                        i+=2;
+                        end+=2;
+                        continue;
+                    }
+                    if (a[start] - a[start - 1] >= MIN_SPACE &&
+                    a[end+1] - a[end] >= MIN_SPACE){
+                        //这是一个数字
+                        result.add(new Mat(m, new Rect(a[start] , 0 ,a[end] - a[start] , mHeight)));
+                        /*for (int s = 0;s < mWidth ; s++){
+                            src.put(s , a[start] , BLACK);
+                            src.put(s , a[end - 1], BLACK);
+                        }*/
+                        break;
+                    }
+                    i+=2;
+                    end+=2;
+                }
+                result.add(new Mat(m, new Rect(a[start] , 0 ,a[end] - a[start] , mHeight)));
+                /*for (int s = 0;s < mWidth ; s++){
+                    src.put(s , a[start] , BLACK);
+                    src.put(s , a[end - 1], BLACK);
+                }*/
+            }
+        }
+
+        //System.out.println(gson.toJson(result));
+        return result;
+    }
+
+    public List<Mat> addressCharacterSplit(){
+        return addressCharacterSplit(this.mat);
+    }
+
 }

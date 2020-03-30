@@ -1,10 +1,18 @@
 package util;
 
 import com.google.gson.Gson;
+import net.sourceforge.tess4j.Tesseract;
+import net.sourceforge.tess4j.TesseractException;
 import org.opencv.core.*;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferByte;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -281,6 +289,29 @@ public class ImageUtils {
 
 
 
+    /**
+     * Mat转image
+     * @param matrix 待处理的内容
+     * @return 返回的image
+     */
+    public static Image toBufferedImage(Mat matrix) {
+        int type = BufferedImage.TYPE_BYTE_GRAY;
+        if (matrix.channels()>1) {
+            type = BufferedImage.TYPE_3BYTE_BGR;
+        }
+        int bufferSize = matrix.channels()*matrix.cols()*matrix.rows();
+        byte[] buffer = new byte[bufferSize];
+        matrix.get(0, 0, buffer);
+        BufferedImage image = new BufferedImage(matrix.cols(), matrix.rows(),type);
+        final byte[] targetPxiels = ((DataBufferByte)image.getRaster().getDataBuffer()).getData();
+        System.arraycopy(buffer, 0, targetPxiels, 0, buffer.length);
+        return image;
+    }
+
+    /**
+     * 寻找边缘
+     * @return 边缘得集合
+     */
 
     public List<MatOfPoint> findContours(){
         List<MatOfPoint> list = new ArrayList<>();
@@ -379,6 +410,23 @@ public class ImageUtils {
         this.mat = mat;
 
     }
+    /***
+     * 将Image变量保存成图片
+     * @param im image
+     * @param fileName 文件名
+      */
+    public  void  saveImage(Image im ,String  fileName) {
+        int w = im.getWidth(null);
+        int h = im.getHeight(null);
+        BufferedImage bi = new BufferedImage(w, h, BufferedImage.TYPE_3BYTE_BGR);
+        Graphics g = bi.getGraphics();
+        g.drawImage(im, 0, 0, null);
+        try {
+            ImageIO.write(bi, "jpg", new File(fileName));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * 将图片大小固定化
@@ -435,7 +483,7 @@ public class ImageUtils {
     }
 
     /**
-     * 对输入的图片进行字符分割，行分割和列分割，适用于住址，身份证号，民族部分
+     * 对输入的图片进行字符分割，行分割和列分割，适用于住址，民族部分
      * @param src 待处理的图片
      * @return 分割完毕的图片集合
      */
@@ -696,6 +744,23 @@ public class ImageUtils {
         return result;
     }
 
+    /**
+     * doOCR
+     */
+    public static String doOCR(String fileName , String language){
+        Tesseract tesseract = new Tesseract();
+        //tesseract.setDatapath("D:\\project\\IDEAProject\\jkda\\opencv\\src\\main\\resources\\tessdata");
+        tesseract.setLanguage(language);
+
+        try {
+
+            return tesseract.doOCR(new File(fileName));
+
+        }catch (TesseractException e){
+            System.err.print(e.getMessage());
+        }
+        return "";
+    }
 
     /**
      * 对自身的mat进行分割

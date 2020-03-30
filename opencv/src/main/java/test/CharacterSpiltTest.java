@@ -6,9 +6,11 @@ import org.opencv.imgcodecs.Imgcodecs;
 import util.ImageUtils;
 
 public class CharacterSpiltTest {
-    static{ System.loadLibrary(Core.NATIVE_LIBRARY_NAME); }
+    static{ System.loadLibrary(Core.NATIVE_LIBRARY_NAME);}
 
     public static void main(String[] args) {
+        String chi_sim = "chi_sim";
+        String eng = "eng";
         ImageUtils src = new ImageUtils("D:\\photo\\cg.jpg");
         src.photoResize();
         ImageUtils name = new ImageUtils(src.split(
@@ -43,27 +45,45 @@ public class CharacterSpiltTest {
         number.toGray();
         number.medianBlur();
         number.binaryzation(number.getUCNew());
+        name.saveImg(ImageUtils.OUTPUT_FILE_PATH + "name" + ".jpg");
+        nation.saveImg(ImageUtils.OUTPUT_FILE_PATH + "nation" + ".jpg");
+        address.saveImg(ImageUtils.OUTPUT_FILE_PATH + "address" + ".jpg");
+        number.saveImg(ImageUtils.OUTPUT_FILE_PATH + "number" + ".jpg");
+        System.out.println(ImageUtils.doOCR(ImageUtils.OUTPUT_FILE_PATH + "address" + ".jpg",chi_sim));
+        System.out.println(ImageUtils.doOCR(ImageUtils.OUTPUT_FILE_PATH + "name" + ".jpg",chi_sim));
+        System.out.println(ImageUtils.doOCR(ImageUtils.OUTPUT_FILE_PATH + "nation" + ".jpg",chi_sim));
+        System.out.println(ImageUtils.doOCR(ImageUtils.OUTPUT_FILE_PATH + "number" + ".jpg",eng));
         int i = 0;
+        String result = "";
         for (Mat mat:name.nameCharacterSplit()){
             Imgcodecs.imwrite(ImageUtils.OUTPUT_FILE_PATH + "name" + i +".jpg",mat);
+
+             //result += ImageUtils.doOCR(ImageUtils.OUTPUT_FILE_PATH + "name" + i +".jpg");
             i++;
         }
         i = 0;
         for (Mat mat:nation.nationCharacterSpilt()){
             Imgcodecs.imwrite(ImageUtils.OUTPUT_FILE_PATH + "nation" + i +".jpg",mat);
+
+                //    result +=    ImageUtils.doOCR(ImageUtils.OUTPUT_FILE_PATH + "nation" + i +".jpg");
             i++;
         }
         i = 0;
         for (Mat mat:address.addressCharacterSplit()){
             Imgcodecs.imwrite(ImageUtils.OUTPUT_FILE_PATH + "address" + i +".jpg",mat);
+
+                  //  result +=  ImageUtils.doOCR(ImageUtils.OUTPUT_FILE_PATH + "address" + i +".jpg");
             i++;
         }
         i = 0;
         for (Mat mat:number.numberCharacterSpilt()){
             Imgcodecs.imwrite(ImageUtils.OUTPUT_FILE_PATH + "number" + i +".jpg",mat);
+
+                  //  result +=    ImageUtils.doOCR(ImageUtils.OUTPUT_FILE_PATH + "number" + i +".jpg");
             i++;
         }
 
 
+        System.out.println(result);
     }
 }

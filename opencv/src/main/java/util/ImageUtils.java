@@ -3,6 +3,7 @@ package util;
 import com.google.gson.Gson;
 import net.sourceforge.tess4j.Tesseract;
 import net.sourceforge.tess4j.TesseractException;
+import org.opencv.core.Point;
 import org.opencv.core.*;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
@@ -320,10 +321,7 @@ public class ImageUtils {
         return list;
     }
 
-    public void drawContours(){
-        List<MatOfPoint> list = findContours();
-        Imgproc.drawContours(this.mat, list , -1 ,new Scalar(255 ,0 , 0), 3);
-    }
+
 
 
     public RotatedRect minAreaRect(){
@@ -402,13 +400,19 @@ public class ImageUtils {
     }
 
     /**
-     * OPenCV提供的Canny降噪方法
+     * OPenCV提供的Canny边缘检测
      */
     public void canny(){
         Mat mat = new Mat();
         Imgproc.Canny(this.mat, mat, 50, 150, 3);
         this.mat = mat;
 
+    }
+
+    public static Mat canny(Mat src){
+        Mat dst = new Mat();
+        Imgproc.Canny(src, dst, 50, 150, 3);
+        return dst;
     }
     /***
      * 将Image变量保存成图片
@@ -443,7 +447,7 @@ public class ImageUtils {
      * @param width 目标图像的宽度
      * @return 目标图像
      */
-    public Mat resize(Mat src , int width , int height){
+    public static Mat resize(Mat src , int width , int height){
         Mat dst = new Mat();
         //OpenCV提供的默认归一化方法
         Imgproc.resize(src, dst, new Size(width , height));
@@ -778,4 +782,69 @@ public class ImageUtils {
 
     public List<Mat> nationCharacterSpilt(){return characterSplit(this.mat);}
 
+    /**
+     * 寻找轮廓
+     * OpenCV3.2.0中提供了查找轮廓的方法：
+     * Imgproc.findContours(Mat image, List contours, Mat hierarchy, int mode, int method, Point offset)
+     *
+     * 参数说明：
+     * image：8位单通道图像。
+     * contours：存储检测到的轮廓的集合。
+     * hierarchy：可选的输出向量，包含了图像轮廓的拓扑信息。
+     * mode：轮廓检索模式。有如下几种模式：
+     * 1、RETR_EXTERNAL只检测最外围的轮廓
+     * 2、RETR_LIST提取所有的轮廓,不建立上下等级关系,只有兄弟等级关系
+     * 3、RETR_CCOMP提取所有轮廓,建立为双层结构
+     * 4、RETR_TREE提取所有轮廓,建立网状结构
+     * method：轮廓的近似方法。取值如下：
+     * 1、CHAIN_APPROX_NONE获取轮廓的每一个像素,像素的最大间距不超过1
+     * 2、CHAIN_APPROX_SIMPLE压缩水平垂直对角线的元素,只保留该方向的终点坐标(也就是说一条中垂线a-b,中间的点被忽略了)
+     * 3、CHAIN_APPROX_TC89_LI使用TEH_CHAIN逼近算法中的LI算法
+     * 4、CHAIN_APPROX_TC89_KCOS使用TEH_CHAIN逼近算法中的KCOS算法
+     * offset：每个轮廓点的可选偏移量。
+     */
+    public static List<MatOfPoint> findContours(Mat src){
+        List<MatOfPoint> contours = new ArrayList<>();
+        Mat hierarchy = new Mat();
+        Imgproc.findContours(src, contours, hierarchy,  Imgproc.RETR_EXTERNAL, Imgproc.CHAIN_APPROX_SIMPLE,
+                new Point(0, 0));
+        return contours;
+    }
+
+    /**
+     * 标识出轮廓
+     * @param contours 轮廓
+     */
+    public void drawContours(List<MatOfPoint> contours){
+        for (int i = 0; i < contours.size(); i++)
+        {
+            Imgproc.drawContours(this.mat, contours, i, new Scalar(255, 255, 255), 1);
+        }
+    }
+
+    public void drawContours(){
+        List<MatOfPoint> contours = findContours();
+        for (int i = 0; i < contours.size(); i++)
+        {
+            Imgproc.drawContours(this.mat, contours, i, new Scalar(255, 0, 0, 0), 1);
+        }
+    }
+    /**
+     * 高斯滤波
+     */
+    public static Mat gaussianBlur(Mat src){
+        Mat result = new Mat();
+        /*src：输入源图像
+        dst：输出目标图像
+        ksize：内核模板大小
+        sigmaX：高斯内核在X方向的标准偏差
+        sigmaY：高斯内核在Y方向的标准偏差。如果sigmaY为0，他将和sigmaX的值相同，如果他们都为0，那么他们由ksize.width和ksize.height计算得出
+        borderType： 用于判断图像边界的模式*/
+        Imgproc.GaussianBlur(src, result, new Size(15,15), 0, 0, Core.BORDER_DEFAULT);
+        return result;
+    }
+
+    public void gaussianBlur(){
+        this.mat = gaussianBlur(this.mat);
+    }
 }

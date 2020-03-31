@@ -8,7 +8,7 @@ import util.ImageUtils;
 public class dd {
     public static void main(String[] args)
     {
-        
+
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
         Mat src = Imgcodecs.imread("D:\\photo\\IMG_20200330_153849.jpg");
         src = ImageUtils.resize(src , 800 , 600);

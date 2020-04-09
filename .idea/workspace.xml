@@ -32,11 +32,35 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="259fb85b-1cd0-4f8a-aadc-8c51bd390d2b" name="Default Changelist" comment="正在寻找最合适的参数以提高轮廓寻找的成功率">
-      <change afterPath="$PROJECT_DIR$/opencv/src/main/java/test/FindContoursTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/opencv/src/main/java/test/dd.java" afterDir="false" />
+    <list default="true" id="259fb85b-1cd0-4f8a-aadc-8c51bd390d2b" name="Default Changelist" comment="基本功能已经完成。接下来需要的任务：1、完成仿射变换与检测身份证图片是否需要旋转180°。2、完成不使用Tesseract识别身份证号。3、重新整理代码。4、尝试优化代码。5、发布到阿里云并完成简单的浏览器界面。">
+      <change afterPath="$PROJECT_DIR$/opencv/src/main/java/test/CutIDCardTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/opencv/src/main/java/test/FindIDCardTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/opencv/src/main/java/test/MainTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/src/main/java/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/src/main/java/OpenCVJavaTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/src/main/java/ddd.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/src/main/java/test/FindContoursTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/src/main/java/test/FindContoursTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/src/main/java/test/Tess4jTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/src/main/java/test/Tess4jTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/src/main/java/test/dd.java" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/src/main/java/test/dd.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/opencv/src/main/java/util/ImageUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/src/main/java/util/ImageUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/src/main/java/util/ImageViewer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/target/classes/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/target/classes/OpenCVJavaTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/target/classes/ddd.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/target/classes/tessdata/chi_sim.traineddata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/target/classes/tessdata/configs/api_config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/target/classes/tessdata/configs/digits" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/target/classes/tessdata/configs/hocr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/target/classes/tessdata/eng.traineddata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/target/classes/tessdata/osd.traineddata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/target/classes/tessdata/pdf.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/target/classes/tessdata/pdf.ttx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/target/classes/test/FindContoursTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/target/classes/test/FindContoursTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/target/classes/test/Tess4jTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/target/classes/test/Tess4jTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/target/classes/test/dd.class" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/target/classes/test/dd.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/target/classes/util/ImageUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/opencv/target/classes/util/ImageUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/target/classes/util/ImageViewer.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,7 +157,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="database.console.LAST_STATE" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/opencv/src/main/resources/tessdata" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/tessdata" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -146,12 +170,25 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.3488095" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="http.proxy" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
       <recent name="com.cs.util" />
       <recent name="util" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\project\jkda\tessdata" />
+      <recent name="D:\project\jkda\opencv\lib" />
+      <recent name="D:\project\jkda\opencv\src\main\resources\tessdata" />
+      <recent name="D:\project\jkda\opencv\tessdata" />
+      <recent name="D:\project\jkda\opencv\src\main" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\project\jkda" />
@@ -160,37 +197,10 @@
       <recent name="D:\project\IDEAProject\jkda\opencv\src\main\java" />
       <recent name="D:\project\IDEAProject\jkda\jkda\src\main\resources\mapping" />
     </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\project\jkda\opencv\src\main\resources\tessdata" />
-      <recent name="D:\project\jkda\opencv\tessdata" />
-      <recent name="D:\project\jkda\opencv\src\main" />
-      <recent name="D:\project\jkda\opencv\lib" />
-      <recent name="D:\project\jkda\opencv\src\main\resources" />
-    </key>
   </component>
-  <component name="RunManager" selected="Application.dd">
-    <configuration name="CharacterSpiltTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="test.CharacterSpiltTest" />
-      <module name="opencv" />
-      <option name="VM_PARAMETERS" value="-d64 -Djava.library.path=D:\project\jkda\opencv\lib" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FindContoursTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="test.FindContoursTest" />
+  <component name="RunManager" selected="Application.MainTest">
+    <configuration name="CutIDCardTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="test.CutIDCardTest" />
       <module name="opencv" />
       <extension name="coverage">
         <pattern>
@@ -202,9 +212,28 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
+    <configuration name="FindIDCardTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="test.FindIDCardTest" />
       <module name="opencv" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="test.MainTest" />
+      <module name="opencv" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -262,20 +291,20 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Application.CharacterSpiltTest" />
-      <item itemvalue="Application.Main" />
-      <item itemvalue="Application.Tess4jTest" />
-      <item itemvalue="Maven.jkda [mybatis-generator:generate,-e]" />
-      <item itemvalue="Application.FindContoursTest" />
       <item itemvalue="Application.dd" />
+      <item itemvalue="Maven.jkda [mybatis-generator:generate,-e]" />
+      <item itemvalue="Application.FindIDCardTest" />
+      <item itemvalue="Application.CutIDCardTest" />
+      <item itemvalue="Application.MainTest" />
+      <item itemvalue="Application.Tess4jTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.dd" />
-        <item itemvalue="Application.FindContoursTest" />
-        <item itemvalue="Application.CharacterSpiltTest" />
+        <item itemvalue="Application.MainTest" />
         <item itemvalue="Application.Tess4jTest" />
-        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.CutIDCardTest" />
+        <item itemvalue="Application.FindIDCardTest" />
+        <item itemvalue="Application.dd" />
       </list>
     </recent_temporary>
   </component>
@@ -396,7 +425,21 @@
       <option name="project" value="LOCAL" />
       <updated>1585564152820</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="正在寻找最合适的参数以提高轮廓寻找的成功率">
+      <created>1585646879433</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1585646879433</updated>
+    </task>
+    <task id="LOCAL-00012" summary="添加一些tesseract所需要的文件到git中">
+      <created>1585647078609</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1585647078609</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -429,7 +472,9 @@
     <MESSAGE value="还缺少对单个字符的归一化" />
     <MESSAGE value="增加DoOCR方法，引入Tess4j" />
     <MESSAGE value="正在寻找最合适的参数以提高轮廓寻找的成功率" />
-    <option name="LAST_COMMIT_MESSAGE" value="正在寻找最合适的参数以提高轮廓寻找的成功率" />
+    <MESSAGE value="添加一些tesseract所需要的文件到git中" />
+    <MESSAGE value="基本功能已经完成。接下来需要的任务：1、完成仿射变换与检测身份证图片是否需要旋转180°。2、完成不使用Tesseract识别身份证号。3、重新整理代码。4、尝试优化代码。5、发布到阿里云并完成简单的浏览器界面。" />
+    <option name="LAST_COMMIT_MESSAGE" value="基本功能已经完成。接下来需要的任务：1、完成仿射变换与检测身份证图片是否需要旋转180°。2、完成不使用Tesseract识别身份证号。3、重新整理代码。4、尝试优化代码。5、发布到阿里云并完成简单的浏览器界面。" />
   </component>
   <component name="WindowStateProjectService">
     <state x="344" y="42" key="#All_in_quickstart" timestamp="1581760241475">
@@ -480,34 +525,38 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state width="469" height="438" key="DebuggerActiveHint/0.0.1280.689@0.0.1280.689" timestamp="1584935494818" />
+    <state x="93" y="93" width="1095" height="504" key="DiffContextDialog" timestamp="1586425955302">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="93" y="93" width="1095" height="504" key="DiffContextDialog/0.0.1280.689@0.0.1280.689" timestamp="1586425955302" />
     <state x="458" y="140" key="FileChooserDialogImpl" timestamp="1585537959401">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="458" y="140" key="FileChooserDialogImpl/0.0.1280.689@0.0.1280.689" timestamp="1585537959401" />
     <state x="458" y="146" key="FileChooserDialogImpl/0.0.1280.720@0.0.1280.720" timestamp="1584506878850" />
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1584254929683" />
-    <state width="1237" height="162" key="GridCell.Tab.0.bottom" timestamp="1585646846339">
+    <state width="1237" height="162" key="GridCell.Tab.0.bottom" timestamp="1586425796309">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="162" key="GridCell.Tab.0.bottom/0.0.1280.689@0.0.1280.689" timestamp="1585646846339" />
+    <state width="1237" height="162" key="GridCell.Tab.0.bottom/0.0.1280.689@0.0.1280.689" timestamp="1586425796309" />
     <state width="1237" height="176" key="GridCell.Tab.0.bottom/0.0.1280.720@0.0.1280.720" timestamp="1584507455904" />
     <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584255569293" />
-    <state width="1237" height="162" key="GridCell.Tab.0.center" timestamp="1585646846339">
+    <state width="1237" height="162" key="GridCell.Tab.0.center" timestamp="1586425796309">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="162" key="GridCell.Tab.0.center/0.0.1280.689@0.0.1280.689" timestamp="1585646846339" />
+    <state width="1237" height="162" key="GridCell.Tab.0.center/0.0.1280.689@0.0.1280.689" timestamp="1586425796309" />
     <state width="1237" height="176" key="GridCell.Tab.0.center/0.0.1280.720@0.0.1280.720" timestamp="1584507455904" />
     <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1584255569293" />
-    <state width="1237" height="162" key="GridCell.Tab.0.left" timestamp="1585646846339">
+    <state width="1237" height="162" key="GridCell.Tab.0.left" timestamp="1586425796309">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="162" key="GridCell.Tab.0.left/0.0.1280.689@0.0.1280.689" timestamp="1585646846339" />
+    <state width="1237" height="162" key="GridCell.Tab.0.left/0.0.1280.689@0.0.1280.689" timestamp="1586425796309" />
     <state width="1237" height="176" key="GridCell.Tab.0.left/0.0.1280.720@0.0.1280.720" timestamp="1584507455904" />
     <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1584255569293" />
-    <state width="1237" height="162" key="GridCell.Tab.0.right" timestamp="1585646846339">
+    <state width="1237" height="162" key="GridCell.Tab.0.right" timestamp="1586425796309">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="162" key="GridCell.Tab.0.right/0.0.1280.689@0.0.1280.689" timestamp="1585646846339" />
+    <state width="1237" height="162" key="GridCell.Tab.0.right/0.0.1280.689@0.0.1280.689" timestamp="1586425796309" />
     <state width="1237" height="176" key="GridCell.Tab.0.right/0.0.1280.720@0.0.1280.720" timestamp="1584507455904" />
     <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1584255569293" />
     <state width="1237" height="208" key="GridCell.Tab.1.bottom" timestamp="1584936601656">
@@ -546,18 +595,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="556" y="123" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1584251292958" />
-    <state x="208" y="0" width="1003" height="689" key="SettingsEditor" timestamp="1585551846665">
+    <state x="208" y="0" width="1003" height="689" key="SettingsEditor" timestamp="1586066704352">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="208" y="0" width="1003" height="689" key="SettingsEditor/0.0.1280.689@0.0.1280.689" timestamp="1585551846665" />
+    <state x="208" y="0" width="1003" height="689" key="SettingsEditor/0.0.1280.689@0.0.1280.689" timestamp="1586066704352" />
     <state x="208" y="0" width="1003" height="707" key="SettingsEditor/0.0.1280.720@0.0.1280.720" timestamp="1584507354645" />
     <state x="249" y="0" width="1203" height="715" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1584255601363" />
-    <state x="301" y="122" key="Vcs.Push.Dialog.v2" timestamp="1585564200926">
+    <state x="301" y="122" key="Vcs.Push.Dialog.v2" timestamp="1585647082684">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="301" y="122" key="Vcs.Push.Dialog.v2/0.0.1280.689@0.0.1280.689" timestamp="1585564200926" />
+    <state x="301" y="122" key="Vcs.Push.Dialog.v2/0.0.1280.689@0.0.1280.689" timestamp="1585647082684" />
     <state x="301" y="127" key="Vcs.Push.Dialog.v2/0.0.1280.720@0.0.1280.720" timestamp="1584507519914" />
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1584254781574" />
+    <state x="199" y="93" key="caller.chooser.dialog" timestamp="1586423359213">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="199" y="93" key="caller.chooser.dialog/0.0.1280.689@0.0.1280.689" timestamp="1586423359213" />
     <state x="93" y="93" width="1095" height="504" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1585534428292">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
@@ -570,9 +623,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="419" y="92" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1581915162730" />
-    <state x="562" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1583323249896">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="468" y="275" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586406909927">
+      <screen x="0" y="0" width="1280" height="689" />
     </state>
+    <state x="468" y="275" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.689@0.0.1280.689" timestamp="1586406909927" />
     <state x="562" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1583323249896" />
     <state x="540" y="115" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1581915406245">
       <screen x="0" y="0" width="1536" height="824" />

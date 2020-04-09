@@ -1,6 +1,6 @@
 package util;
 
-import com.google.gson.Gson;
+import com.sun.istack.internal.NotNull;
 import net.sourceforge.tess4j.Tesseract;
 import net.sourceforge.tess4j.TesseractException;
 import org.opencv.core.Point;
@@ -17,7 +17,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 /**
@@ -72,7 +73,6 @@ public class ImageUtils {
     public static final String INPUT_FILE_PATH = "D:\\photo\\";
     public static final String OUTPUT_FILE_PATH = "D:\\out\\";
     private Mat mat;
-    public static final Gson gson = new Gson();
     public static final int OFFSET = 20;
 
     /**
@@ -321,15 +321,6 @@ public class ImageUtils {
         return list;
     }
 
-
-
-
-    public RotatedRect minAreaRect(){
-        return Imgproc.minAreaRect(new MatOfPoint2f(findContours().get(0)));
-
-    }
-
-
     /**
      * 8邻域降噪,又有点像9宫格降噪;即如果9宫格中心被异色包围，则同化
      * @param pNum 默认值为1
@@ -387,9 +378,6 @@ public class ImageUtils {
 
     }
 
-
-
-
     /**
      * OpenCV提供的中值滤波降噪算法
      */
@@ -397,6 +385,19 @@ public class ImageUtils {
         Mat mat = new Mat();
         Imgproc.medianBlur(this.mat, mat , 5);
         this.mat = mat;
+    }
+
+    /**
+     * 去除字符串中的空格、回车、换行符、制表符
+     */
+    public static String replaceBlank(String str) {
+        String dest = "";
+        if (str!=null) {
+        Pattern p = Pattern.compile("\\s*|\t|\r|\n");
+        Matcher m = p.matcher(str);
+        dest = m.replaceAll("");
+    }
+    return dest;
     }
 
     /**
@@ -468,6 +469,17 @@ public class ImageUtils {
         return dst;
     }
 
+    public static Mat resize(Mat src){
+        int width = src.width();
+        int height = src.height();
+        if (width > 1000 && height > 1000){
+            int a = Math.max(width , height) / 1600;
+            width /= a;
+            height /= a;
+        }
+        return resize(src , width , height);
+
+    }
     /**
      * 图片分割
 
@@ -538,9 +550,6 @@ public class ImageUtils {
                 }*/
 
         }
-        /*System.out.println(rows.size());
-        Imgcodecs.imwrite(OUTPUT_FILE_PATH + "111.jpg",rows.get(0));
-        Imgcodecs.imwrite(OUTPUT_FILE_PATH + "222.jpg",rows.get(1));*/
 
         for (Mat m : rows){
             int mHeight = m.rows();
@@ -753,7 +762,7 @@ public class ImageUtils {
      */
     public static String doOCR(String fileName , String language){
         Tesseract tesseract = new Tesseract();
-        //tesseract.setDatapath("D:\\project\\IDEAProject\\jkda\\opencv\\src\\main\\resources\\tessdata");
+        tesseract.setDatapath("D:\\project\\jkda");
         tesseract.setLanguage(language);
 
         try {
@@ -807,9 +816,10 @@ public class ImageUtils {
         List<MatOfPoint> contours = new ArrayList<>();
         Mat hierarchy = new Mat();
         Imgproc.findContours(src, contours, hierarchy,  Imgproc.RETR_EXTERNAL, Imgproc.CHAIN_APPROX_SIMPLE,
-                new Point(0, 0));
+                new Point(1, 1));
         return contours;
     }
+
 
     /**
      * 标识出轮廓
@@ -818,7 +828,7 @@ public class ImageUtils {
     public void drawContours(List<MatOfPoint> contours){
         for (int i = 0; i < contours.size(); i++)
         {
-            Imgproc.drawContours(this.mat, contours, i, new Scalar(255, 255, 255), 1);
+            Imgproc.drawContours(this.mat, contours, i, new Scalar(255, 0, 0), 1);
         }
     }
 
@@ -829,6 +839,179 @@ public class ImageUtils {
             Imgproc.drawContours(this.mat, contours, i, new Scalar(255, 0, 0, 0), 1);
         }
     }
+
+    /**
+     * 寻找轮廓，并按照递增排序
+     *
+     * @param src Canny之后的Mat矩阵
+     * @return 递减顺序的轮廓集合
+     */
+    public static List<MatOfPoint> findContoursAndSort(Mat src) {
+        List<MatOfPoint> contours = findContours(src);
+        if (contours.size() < 1 || contours.size() > 100) {
+
+            System.out.println(contours.size());
+            throw new RuntimeException("未找到身份证轮廓，请检查提交的照片是否符合要求");
+        }
+                // 对
+        // contours进行了排序，按递减顺序
+                contours.sort((o1, o2) -> {
+                    MatOfPoint2f mat1 = new MatOfPoint2f(o1.toArray());
+                    RotatedRect rect1 = Imgproc.minAreaRect(mat1);
+                    Rect r1 = rect1.boundingRect();
+                    MatOfPoint2f mat2 = new MatOfPoint2f(o2.toArray());
+                    RotatedRect rect2 = Imgproc.minAreaRect(mat2);
+                    Rect r2 = rect2.boundingRect();
+                    return (int) (r2.area() - r1.area());
+                });
+                return contours;
+
+        }
+
+    /**
+     * 作用：返回边缘检测之后的最大轮廓
+     *
+     * @param src      Canny之后的Mat矩阵
+     * @return 最大轮廓
+     */
+    public static MatOfPoint findMaxContour(Mat src) {
+        return findContoursAndSort(src).get(0);
+    }
+
+
+    public static Mat cutIDCard(Mat src){
+        src = ImageUtils.resize(src );
+        Mat dst = src.clone();
+        Imgproc.cvtColor(dst, dst, Imgproc.COLOR_BGRA2GRAY);
+        Imgproc.GaussianBlur(dst , dst , new Size(15,15),0);
+        Imgproc.Canny(dst, dst, 0, 100, 3);
+        RotatedRect rect = ImageUtils.findMaxRect(dst);
+        // 旋转矩形
+        Mat CorrectImg = rotation(dst , rect);
+        Mat NativeCorrectImg = rotation(src , rect);
+        //裁剪矩形
+        return cutRect(CorrectImg , NativeCorrectImg) ;
+    }
+
+    public static void preProcess(Mat src){
+        ImageUtils imageUtils = new ImageUtils(src);
+        imageUtils.photoResize();
+        ImageUtils name = new ImageUtils(imageUtils.split(ImageUtils.NAME_START_HEIGHT, ImageUtils.NAME_END_HEIGHT,
+                ImageUtils.NAME_START_WIDTH, ImageUtils.NAME_END_WIDTH));
+        name.toGray();
+        name.medianBlur();
+        name.binaryzation(name.getUCNew());
+        ImageUtils nation = new ImageUtils(imageUtils.split(ImageUtils.NATION_START_HEIGHT, ImageUtils.NATION_END_HEIGHT,
+                ImageUtils.NATION_START_WIDTH, ImageUtils.NATION_END_WIDTH));
+        nation.toGray();
+        nation.medianBlur();
+        nation.binaryzation(nation.getUCNew());
+        ImageUtils address = new ImageUtils(imageUtils.split(ImageUtils.ADDRESS_START_HEIGHT, ImageUtils.ADDRESS_END_HEIGHT,
+                ImageUtils.ADDRESS_START_WIDTH, ImageUtils.ADDRESS_END_WIDTH));
+        address.toGray();
+        address.medianBlur();
+        address.binaryzation(address.getUCNew());
+
+        ImageUtils number = new ImageUtils(imageUtils.split(ImageUtils.NUMBER_START_HEIGHT, ImageUtils.NUMBER_END_HEIGHT,
+                ImageUtils.NUMBER_START_WIDTH, ImageUtils.NUMBER_END_WIDTH));
+        number.toGray();
+        number.medianBlur();
+        number.binaryzation(number.getUCNew());
+        ArrayList<Mat> mats = new ArrayList<>();
+        name.saveImg("D:\\out\\name.jpg");
+        nation.saveImg("D:\\out\\nation.jpg");
+        address.saveImg("D:\\out\\address.jpg");
+        number.saveImg("D:\\out\\number.jpg");
+    }
+    /**
+     * 返回边缘检测之后的最大矩形
+     *
+     * @param src Canny之后的mat矩阵
+     * @return 最大矩形
+     */
+    public static RotatedRect findMaxRect(@NotNull Mat src) {
+        return Imgproc.minAreaRect(new MatOfPoint2f(findMaxContour(src).toArray()));
+    }
+    /**
+     * 旋转矩形
+     *
+     * @param src mat矩阵
+     * @param rect 矩形
+     * @return 旋转完毕的结果
+     */
+    public static Mat rotation(Mat src, RotatedRect rect) {
+        // 获取矩形的四个顶点
+        Point[] rectPoint = new Point[4];
+        rect.points(rectPoint);
+
+        double angle = rect.angle;
+        if (rect.size.width < rect.size.height ){
+            angle += 90;
+        }
+
+        Point center = rect.center;
+
+        Mat CorrectImg = new Mat(src.size(), src.type());
+
+        src.copyTo(CorrectImg);
+
+        // 得到旋转矩阵算子
+        Mat matrix = Imgproc.getRotationMatrix2D(center, angle, 0.8);
+
+        Imgproc.warpAffine(CorrectImg, CorrectImg, matrix, CorrectImg.size(), 1, 0, new Scalar(0, 0, 0));
+
+        return CorrectImg;
+    }
+
+
+    public static Mat cutRect(Mat correctMat , Mat nativeCorrectMat) {
+        // 获取最大矩形
+        RotatedRect rect = findMaxRect(correctMat);
+
+        Point[] rectPoint = new Point[4];
+        rect.points(rectPoint);
+        int startLeft = (int)Math.abs(rectPoint[0].x);
+        int startUp = (int)Math.min(rectPoint[0].y , rectPoint[1].y);
+        int width = (int)Math.abs(rectPoint[2].x - rectPoint[0].x);
+        int height = (int)Math.abs(rectPoint[1].y - rectPoint[0].y);
+        Mat temp = new Mat(nativeCorrectMat , new Rect(startLeft , startUp , width , height ));
+        Mat t = new Mat();
+        temp.copyTo(t);
+        return t;
+    }
+    /**
+     * 利用函数approxPolyDP来对指定的点集进行逼近 精确度设置好，效果还是比较好的
+     * 主要功能是把一个连续光滑曲线折线化：
+     * 参数有4个：
+     * InputArray curve：输入曲线，数据类型可以为vector<Point>。
+     * OutputArray approxCurve：输出折线，数据类型可以为vector<Point>。
+     * double epsilon：判断点到相对应的line segment 的距离的阈值。（距离大于此阈值则舍弃，小于此阈值则保留，epsilon越小，折线的形状越“接近”曲线。）
+     * bool closed：曲线是否闭合的标志位。
+     * @param src 待处理
+     */
+    public static Point[] useApproxPolyDPFindPoints(Mat src) {
+        return useApproxPolyDPFindPoints(src, 0.01);
+    }
+
+    /**
+     * 利用函数approxPolyDP来对指定的点集进行逼近 精确度设置好，效果还是比较好的
+     *
+     * @param src 待处理
+     * @param threshold 阀值(精确度)
+     * @return 结果
+     */
+    public static Point[] useApproxPolyDPFindPoints(Mat src, double threshold) {
+
+        MatOfPoint maxContour = findMaxContour(src);
+        MatOfPoint2f approxCurve = new MatOfPoint2f();
+        MatOfPoint2f matOfPoint2f = new MatOfPoint2f(maxContour.toArray());
+        // 原始曲线与近似曲线之间的最大距离设置为0.01，true表示是闭合的曲线
+        Imgproc.approxPolyDP(matOfPoint2f, approxCurve, threshold, true);
+        return approxCurve.toArray();
+
+    }
+
+
     /**
      * 高斯滤波
      */

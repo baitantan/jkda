@@ -13,7 +13,7 @@ public class Tess4jTest {
 
         try {
 
-            System.out.println(tesseract.doOCR(new File("D:\\out\\address0.jpg")));
+            System.out.println(tesseract.doOCR(new File("D:\\out\\address.jpg")));
 
         }catch (TesseractException e){
             System.err.print(e.getMessage());

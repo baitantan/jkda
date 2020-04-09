@@ -19,17 +19,22 @@ public class dd {
                // Imgproc.THRESH_BINARY_INV, 3, 3);
         Imgproc.GaussianBlur(dst , dst , new Size(15,15),0);
         Imgproc.Canny(dst, dst, 0, 100, 3);
-        Imgcodecs.imwrite("D:\\edge.jpg",dst);
+        Imgcodecs.imwrite("D:\\out\\edge.jpg",dst);
         java.util.List<MatOfPoint> contours = new java.util.ArrayList<>();
         Mat hierarchy = new Mat();
-        Imgproc.findContours(dst, contours, hierarchy, Imgproc.RETR_EXTERNAL, Imgproc.CHAIN_APPROX_SIMPLE,
-                new Point(3, 3));
+        /*Imgproc.findContours(dst, contours, hierarchy, Imgproc.RETR_EXTERNAL, Imgproc.CHAIN_APPROX_SIMPLE,
+                new Point(3, 3));*/
+        contours.add(ImageUtils.findMaxContour(dst));
+        //contours = ImageUtils.findContoursAndSort(dst);
         System.out.println(contours.size());
         for (int i = 0; i < contours.size(); i++)
         {
+            MatOfPoint2f matOfPoint2f = new MatOfPoint2f(contours.get(i).toArray());
+            RotatedRect rotatedRect = Imgproc.minAreaRect(matOfPoint2f);
+            System.out.println(rotatedRect.boundingRect().area());
             Imgproc.drawContours(src, contours, i, new Scalar(255, 0, 0, 0), 1);
         }
 
-        Imgcodecs.imwrite("D:\\test.jpg", src);
+        Imgcodecs.imwrite("D:\\out\\test.jpg", src);
     }
 }

@@ -1,15 +1,12 @@
 package test;
 
 import org.opencv.core.Core;
-import org.opencv.core.Mat;
-import org.opencv.imgcodecs.Imgcodecs;
-import util.ImageUtils;
 
 public class NameSplitTest {
     static{ System.loadLibrary(Core.NATIVE_LIBRARY_NAME); }
 
     public static void main(String[] args) {
-        ImageUtils imageUtils = new ImageUtils(
+        /*ImageUtils imageUtils = new ImageUtils(
                 ImageUtils.INPUT_FILE_PATH+"origin.jpg");
         imageUtils.photoResize();
         ImageUtils name = new ImageUtils(imageUtils.split(ImageUtils.NAME_START_HEIGHT, ImageUtils.NAME_END_HEIGHT,
@@ -21,6 +18,6 @@ public class NameSplitTest {
         for (Mat mat:name.nameCharacterSplit()){
             Imgcodecs.imwrite(ImageUtils.OUTPUT_FILE_PATH + "NameSplitTest" + j +".jpg",mat);
             j++;
-        }
+        }*/
     }
 }

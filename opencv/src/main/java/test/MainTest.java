@@ -15,7 +15,7 @@ public class MainTest {
         Mat src = Imgcodecs.imread("D:\\photo\\IMG_20200409_150723.jpg");
         src = ImageUtils.cutIDCard(src);
         Imgcodecs.imwrite( "D:\\out\\src.jpg" , src);
-        ImageUtils.preProcess(src);
+        //ImageUtils.preProcess(src);
         String name = ImageUtils.doOCR("D:\\out\\name.jpg" , "chi_sim");
         String nation = ImageUtils.doOCR("D:\\out\\nation.jpg" , "chi_sim");
         String address = ImageUtils.doOCR("D:\\out\\address.jpg" , "chi_sim");

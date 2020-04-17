@@ -1,12 +1,14 @@
 package util;
 
 import com.sun.istack.internal.NotNull;
+import exception.PhotoNotTrueException;
 import net.sourceforge.tess4j.Tesseract;
 import net.sourceforge.tess4j.TesseractException;
 import org.opencv.core.Point;
 import org.opencv.core.*;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
+import org.opencv.utils.Converters;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -15,10 +17,13 @@ import java.awt.image.DataBufferByte;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static org.opencv.core.CvType.CV_8UC1;
 
 
 /**
@@ -54,7 +59,7 @@ public class ImageUtils {
     public static final int ADDRESS_START_WIDTH = 155*  i;
     public static final int ADDRESS_END_WIDTH = 510*  i;
     //身份证号码所在区域
-    public static final int NUMBER_START_HEIGHT = 450*  i;
+    public static final int NUMBER_START_HEIGHT = 440*  i;
     public static final int NUMBER_END_HEIGHT = 490*  i;
     public static final int NUMBER_START_WIDTH = 290*  i;
     public static final int NUMBER_END_WIDTH = 775*  i;
@@ -72,8 +77,9 @@ public class ImageUtils {
 
     public static final String INPUT_FILE_PATH = "D:\\photo\\";
     public static final String OUTPUT_FILE_PATH = "D:\\out\\";
-    private Mat mat;
-    public static final int OFFSET = 20;
+    //public Mat mat;
+    public static final int OFFSET = 2;
+    public static final int UCOFFSET = 20;
 
     /**
      * 空参构造函数
@@ -82,69 +88,20 @@ public class ImageUtils {
 
     }
 
-    /**
-     * 通过图像路径创建一个mat矩阵
-     *
-     * @param imgFilePath 图像路径
-     */
-    public ImageUtils(String imgFilePath) {
-        mat = Imgcodecs.imread(imgFilePath);
-    }
-
-    public  ImageUtils(Mat mat) {
-        this.mat = mat;
-    }
 
     /**
      * 加载图片
      *
      * @param imgFilePath 等待加载的图像的路径
      */
-    public void loadImg(String imgFilePath) {
-        mat = Imgcodecs.imread(imgFilePath);
+
+    public static Mat loadImg(String imgFilePath){
+        return Imgcodecs.imread(imgFilePath);
     }
 
-    /**
-     * 获取图片高度的函数
-     *
-     * @return 图片高度
-     */
-    public int getHeight() {
-        return mat.rows();
-    }
 
-    /**
-     * 获取图片宽度的函数
-     *
-     * @return 图片宽度
-     */
-    public int getWidth() {
-        return mat.cols();
-    }
 
-    /**
-     * 获取图片像素点的函数
-     *
-     * @param y 行
-     * @param x 列
-     * @return 某像素点的值
-     */
-    public int getPixel(int y, int x) {
-        // 我们处理的是单通道灰度图
-        return (int) mat.get(y, x)[0];
-    }
 
-    /**
-     * 设置图片像素点的函数
-     *
-     * @param y 行
-     * @param x 列
-     * @param color 需要设置的值
-     */
-    public void setPixel(int y, int x, int color) {
-        // 我们处理的是单通道灰度图
-        mat.put(y, x, color);
-    }
 
     /**
      * 保存图片的函数
@@ -152,7 +109,7 @@ public class ImageUtils {
      * @param filename 文件名
      * @return 是否成功保存
      */
-    public boolean saveImg(String filename) {
+    public boolean saveImg(String filename , Mat mat) {
         return Imgcodecs.imwrite(filename, mat);
     }
 
@@ -161,34 +118,34 @@ public class ImageUtils {
      * @param inputImage 待处理的图像
      * @return 灰度化处理完毕的图像
      */
-    public static Mat toGray(Mat inputImage) {
-        Mat imGray = new Mat();
+    public static void toGray(Mat inputImage) {
+
         //使用OpenCV原生方法对图片进行灰度化处理
-        Imgproc.cvtColor(inputImage, imGray, Imgproc.COLOR_BGR2GRAY);
-        return imGray;
+        Imgproc.cvtColor(inputImage, inputImage, Imgproc.COLOR_BGR2GRAY);
+
     }
 
 
     /**
      * 灰度化
      */
-    public void toGray() {
+    /*public void toGray() {
         Mat imGray = new Mat();
         Imgproc.cvtColor(mat, imGray, Imgproc.COLOR_BGR2GRAY);
         mat = imGray;
-    }
+    }*/
 
 
-    public void binaryzationByOpenCV() {
+    public static Mat binaryzationByOpenCV(Mat mat) {
         Mat mat1 = new Mat();
         Imgproc.threshold(mat, mat1, 0, 255, Imgproc.THRESH_BINARY | Imgproc.THRESH_OTSU);
-        mat = mat1;
+        return mat1;
     }
 
     /**
      * 使用自适应阈值二值化
      */
-    public int getUCNew() {
+    public static int getUCNew(Mat mat) {
 
         int ucThre = 0, ucThre_new = 127;
         int nBack_count, nData_count;
@@ -216,6 +173,7 @@ public class ImageUtils {
                 }
             }
 
+
             nBack_sum = nBack_sum / nBack_count;
             nData_sum = nData_sum / nData_count;
             ucThre = ucThre_new;
@@ -223,22 +181,24 @@ public class ImageUtils {
         }
 
 
-        return ucThre_new - OFFSET;
+        return ucThre_new - UCOFFSET;
 
     }
 
-    public void binaryzationByOTSU(){
-        Mat mat = new Mat();
-        Imgproc.threshold(this.mat , mat ,0 ,255 ,Imgproc.THRESH_OTSU);
-        this.mat = mat;
+    public static void  binaryzationByOTSU(Mat mat){
+        Imgproc.threshold(mat , mat ,0 ,255 ,Imgproc.THRESH_OTSU);
     }
 
     /**
      * 使用固定的阈值进行二值化
      */
-    public void binaryzation(int ucTher) {
+    public static void binaryzation(int ucTher , Mat mat) {
 
 
+        if (mat.channels() != 1 || ucTher < 0) {
+            System.out.println("不是单通道图像或者阀值异常");
+            return;
+        }
         int i, j, avg;
         int nValue;
         int width = mat.width(), height = mat.height();
@@ -313,64 +273,64 @@ public class ImageUtils {
      * 寻找边缘
      * @return 边缘得集合
      */
-
-    public List<MatOfPoint> findContours(){
+/*
+    public List<MatOfPoint> findContours(Mat mat){
         List<MatOfPoint> list = new ArrayList<>();
-        Imgproc.findContours(this.mat , list ,new Mat() ,Imgproc.RETR_EXTERNAL , Imgproc.CHAIN_APPROX_SIMPLE);
+        Imgproc.findContours(mat , list ,new Mat() ,Imgproc.RETR_EXTERNAL , Imgproc.CHAIN_APPROX_SIMPLE);
 
         return list;
-    }
+    }*/
 
     /**
      * 8邻域降噪,又有点像9宫格降噪;即如果9宫格中心被异色包围，则同化
      * @param pNum 默认值为1
      */
-    public void denoise(int pNum) {
+    public static void denoise(int pNum , Mat mat) {
         int i, j, m, n, nValue, nCount;
-        int nWidth = getWidth(), nHeight = getHeight();
+        int nWidth = mat.width(), nHeight = mat.height();
 
         // 对图像的边缘进行预处理
         for (i = 0; i < nWidth; ++i) {
-            setPixel(i, 0, WHITE);
-            setPixel(i, nHeight - 1, WHITE);
+            mat.put(i, 0, WHITE);
+            mat.put(i, nHeight - 1, WHITE);
         }
 
         for (i = 0; i < nHeight; ++i) {
-            setPixel(0, i, WHITE);
-            setPixel(nWidth - 1, i, WHITE);
+            mat.put(0, i, WHITE);
+            mat.put(nWidth - 1, i, WHITE);
         }
 
         // 如果一个点的周围都是白色的，而它确是黑色的，删除它
         for (j = 1; j < nHeight - 1; ++j) {
             for (i = 1; i < nWidth - 1; ++i) {
-                nValue = getPixel(j, i);
+                nValue = (int)mat.get(j, i)[0];
                 if (nValue == 0) {
                     nCount = 0;
                     // 比较以(j ,i)为中心的9宫格，如果周围都是白色的，同化
                     for (m = j - 1; m <= j + 1; ++m) {
                         for (n = i - 1; n <= i + 1; ++n) {
-                            if (getPixel(m, n) == 0) {
+                            if ((int) mat.get(m, n)[0] == 0) {
                                 nCount++;
                             }
                         }
                     }
                     if (nCount <= pNum) {
                         // 周围黑色点的个数小于阀值pNum,把该点设置白色
-                        setPixel(j, i, WHITE);
+                        mat.put(j, i, WHITE);
                     }
                 } else {
                     nCount = 0;
                     // 比较以(j ,i)为中心的9宫格，如果周围都是黑色的，同化
                     for (m = j - 1; m <= j + 1; ++m) {
                         for (n = i - 1; n <= i + 1; ++n) {
-                            if (getPixel(m, n) == 0) {
+                            if ((int) mat.get(m, n)[0] == 0) {
                                 nCount++;
                             }
                         }
                     }
                     if (nCount >= 7) {
                         // 周围黑色点的个数大于等于7,把该点设置黑色;即周围都是黑色
-                        setPixel(j, i, BLACK);
+                        mat.put(j, i, BLACK);
                     }
                 }
             }
@@ -381,10 +341,8 @@ public class ImageUtils {
     /**
      * OpenCV提供的中值滤波降噪算法
      */
-    public void medianBlur(){
-        Mat mat = new Mat();
-        Imgproc.medianBlur(this.mat, mat , 5);
-        this.mat = mat;
+    public static void medianBlur(Mat mat){
+        Imgproc.medianBlur(mat, mat , 5);
     }
 
     /**
@@ -403,24 +361,21 @@ public class ImageUtils {
     /**
      * OPenCV提供的Canny边缘检测
      */
-    public void canny(){
-        Mat mat = new Mat();
-        Imgproc.Canny(this.mat, mat, 50, 150, 3);
-        this.mat = mat;
+    public static void canny(Mat mat){
+        Imgproc.Canny(mat, mat, 50, 150, 3);
 
     }
 
-    public static Mat canny(Mat src){
-        Mat dst = new Mat();
-        Imgproc.Canny(src, dst, 50, 150, 3);
-        return dst;
+    public static void canny(Mat src, int threshold1 , int threshold2, int apertureSize){
+        Imgproc.Canny(src, src, threshold1, threshold2, apertureSize);
     }
+
     /***
      * 将Image变量保存成图片
      * @param im image
      * @param fileName 文件名
       */
-    public  void  saveImage(Image im ,String  fileName) {
+    public static void  saveImage(Image im ,String  fileName) {
         int w = im.getWidth(null);
         int h = im.getHeight(null);
         BufferedImage bi = new BufferedImage(w, h, BufferedImage.TYPE_3BYTE_BGR);
@@ -436,8 +391,9 @@ public class ImageUtils {
     /**
      * 将图片大小固定化
      */
-    public void photoResize(){
-        this.mat = resize(this.mat, PHOTO_WIDTH, PHOTN_HEIFHT);
+    public static Mat photoResize(Mat mat){
+        return resize(mat, PHOTO_WIDTH, PHOTN_HEIFHT);
+
     }
 
 
@@ -469,10 +425,15 @@ public class ImageUtils {
         return dst;
     }
 
+    /**
+     * 自适应改变图片大小，降低运算量
+     * @param src 原图片
+     * @return 结果
+     */
     public static Mat resize(Mat src){
         int width = src.width();
         int height = src.height();
-        if (width > 1000 && height > 1000){
+        if (width > 1600 && height > 1600){
             int a = Math.max(width , height) / 1600;
             width /= a;
             height /= a;
@@ -489,11 +450,11 @@ public class ImageUtils {
      * @param end_Width 宽度终点
      * @return 处理完毕的图像
      */
-    public Mat split(int start_Height , int end_Height , int start_Width , int end_Width){
+    public static Mat split(Mat mat, int start_Height , int end_Height , int start_Width , int end_Width){
         Mat result = new Mat();
         Rect rect = new Rect(start_Width, start_Height, end_Width - start_Width, end_Height - start_Height);
         //原理：在生成新的图片时只生成指定的部分
-        Mat tmp_Mat = new Mat(this.mat, rect);
+        Mat tmp_Mat = new Mat(mat, rect);
         tmp_Mat.copyTo(result);
         return result;
     }
@@ -603,14 +564,11 @@ public class ImageUtils {
                     end+=2;
                 }
                 result.add(new Mat(m, new Rect(a[start] , 0 ,a[end] - a[start] , mHeight)));
-                /*for (int s = 0;s < mWidth ; s++){
-                    src.put(s , a[start] , BLACK);
-                    src.put(s , a[end - 1], BLACK);
-                }*/
+
             }
         }
 
-        //System.out.println(gson.toJson(result));
+
         return result;
     }
 
@@ -779,17 +737,17 @@ public class ImageUtils {
      * 对自身的mat进行分割
      * @return 结果集
      */
-    public List<Mat> addressCharacterSplit(){
-        return characterSplit(this.mat);
+    public static List<Mat> addressCharacterSplit(Mat mat){
+        return characterSplit(mat);
     }
 
-    public List<Mat> nameCharacterSplit(){
-        return nameCharacterSpilt(this.mat);
+    public static List<Mat> nameCharacterSplit(Mat mat){
+        return nameCharacterSpilt(mat);
     }
 
-    public List<Mat> numberCharacterSpilt(){return numberCharacterSpilt(this.mat);}
+   // public static List<Mat> numberCharacterSpilt(Mat mat){return numberCharacterSpilt(mat);}
 
-    public List<Mat> nationCharacterSpilt(){return characterSplit(this.mat);}
+    public static List<Mat> nationCharacterSpilt(Mat mat){return characterSplit(mat);}
 
     /**
      * 寻找轮廓
@@ -816,7 +774,7 @@ public class ImageUtils {
         List<MatOfPoint> contours = new ArrayList<>();
         Mat hierarchy = new Mat();
         Imgproc.findContours(src, contours, hierarchy,  Imgproc.RETR_EXTERNAL, Imgproc.CHAIN_APPROX_SIMPLE,
-                new Point(1, 1));
+                new Point(OFFSET, OFFSET));
         return contours;
     }
 
@@ -825,20 +783,13 @@ public class ImageUtils {
      * 标识出轮廓
      * @param contours 轮廓
      */
-    public void drawContours(List<MatOfPoint> contours){
+    public static void drawContours(Mat mat,List<MatOfPoint> contours){
         for (int i = 0; i < contours.size(); i++)
         {
-            Imgproc.drawContours(this.mat, contours, i, new Scalar(255, 0, 0), 1);
+            Imgproc.drawContours(mat, contours, i, new Scalar(255, 255, 255), 1);
         }
     }
 
-    public void drawContours(){
-        List<MatOfPoint> contours = findContours();
-        for (int i = 0; i < contours.size(); i++)
-        {
-            Imgproc.drawContours(this.mat, contours, i, new Scalar(255, 0, 0, 0), 1);
-        }
-    }
 
     /**
      * 寻找轮廓，并按照递增排序
@@ -846,12 +797,10 @@ public class ImageUtils {
      * @param src Canny之后的Mat矩阵
      * @return 递减顺序的轮廓集合
      */
-    public static List<MatOfPoint> findContoursAndSort(Mat src) {
+    public static List<MatOfPoint> findContoursAndSort(Mat src)  {
         List<MatOfPoint> contours = findContours(src);
         if (contours.size() < 1 || contours.size() > 100) {
-
-            System.out.println(contours.size());
-            throw new RuntimeException("未找到身份证轮廓，请检查提交的照片是否符合要求");
+            //throw new FileNotFoundException("未找到身份证轮廓，请检查提交的照片是否符合要求");
         }
                 // 对
         // contours进行了排序，按递减顺序
@@ -880,49 +829,113 @@ public class ImageUtils {
 
 
     public static Mat cutIDCard(Mat src){
-        src = ImageUtils.resize(src );
+        src = resize(src);
         Mat dst = src.clone();
-        Imgproc.cvtColor(dst, dst, Imgproc.COLOR_BGRA2GRAY);
-        Imgproc.GaussianBlur(dst , dst , new Size(15,15),0);
-        Imgproc.Canny(dst, dst, 0, 100, 3);
-        RotatedRect rect = ImageUtils.findMaxRect(dst);
+        //Imgproc.cvtColor(dst, dst, Imgproc.COLOR_BGRA2GRAY);
+        toGray(dst);
+        //Imgproc.GaussianBlur(dst , dst , new Size(15,15),0);
+        gaussianBlur(dst);
+        canny(dst);
+        RotatedRect rect = findMaxRect(dst);
         // 旋转矩形
         Mat CorrectImg = rotation(dst , rect);
         Mat NativeCorrectImg = rotation(src , rect);
+        Imgcodecs.imwrite("D:\\tmp\\CorrectImg.jpg",CorrectImg);
+        Imgcodecs.imwrite("D:\\tmp\\NativeCorrectImg.jpg",NativeCorrectImg);
+
         //裁剪矩形
         return cutRect(CorrectImg , NativeCorrectImg) ;
     }
 
-    public static void preProcess(Mat src){
-        ImageUtils imageUtils = new ImageUtils(src);
-        imageUtils.photoResize();
-        ImageUtils name = new ImageUtils(imageUtils.split(ImageUtils.NAME_START_HEIGHT, ImageUtils.NAME_END_HEIGHT,
-                ImageUtils.NAME_START_WIDTH, ImageUtils.NAME_END_WIDTH));
-        name.toGray();
-        name.medianBlur();
-        name.binaryzation(name.getUCNew());
-        ImageUtils nation = new ImageUtils(imageUtils.split(ImageUtils.NATION_START_HEIGHT, ImageUtils.NATION_END_HEIGHT,
-                ImageUtils.NATION_START_WIDTH, ImageUtils.NATION_END_WIDTH));
-        nation.toGray();
-        nation.medianBlur();
-        nation.binaryzation(nation.getUCNew());
-        ImageUtils address = new ImageUtils(imageUtils.split(ImageUtils.ADDRESS_START_HEIGHT, ImageUtils.ADDRESS_END_HEIGHT,
-                ImageUtils.ADDRESS_START_WIDTH, ImageUtils.ADDRESS_END_WIDTH));
-        address.toGray();
-        address.medianBlur();
-        address.binaryzation(address.getUCNew());
+    public static Mat wrap(Mat srcImage) throws PhotoNotTrueException {
 
-        ImageUtils number = new ImageUtils(imageUtils.split(ImageUtils.NUMBER_START_HEIGHT, ImageUtils.NUMBER_END_HEIGHT,
-                ImageUtils.NUMBER_START_WIDTH, ImageUtils.NUMBER_END_WIDTH));
-        number.toGray();
-        number.medianBlur();
-        number.binaryzation(number.getUCNew());
-        ArrayList<Mat> mats = new ArrayList<>();
-        name.saveImg("D:\\out\\name.jpg");
-        nation.saveImg("D:\\out\\nation.jpg");
-        address.saveImg("D:\\out\\address.jpg");
-        number.saveImg("D:\\out\\number.jpg");
+        List<MatOfPoint> matOfPoints = new ArrayList<>();
+        //需要的话缩小原图
+        srcImage = ImageUtils.resize(srcImage);
+        //dst为edge图片
+        Mat dst = ImageUtils.proProcess(srcImage);
+        //寻找最大轮廓
+        MatOfPoint contour = findMaxContour(dst);
+        //最大轮廓的最小外接矩形
+        RotatedRect rect = Imgproc.minAreaRect(new MatOfPoint2f(contour.toArray()));
+        //寻找凸包
+        matOfPoints.add(ImageUtils.convextHull(contour));
+        //最小外接矩形的四个顶点，把凸包的四个顶点映射到最小外接矩形的四个顶点
+        Point[] points = new Point[4];
+        rect.points(points);
+
+        MatOfPoint2f matOfPoint2f = new MatOfPoint2f();
+        //创建蒙版，此处只是展示凸包的结果，在识别中不起作用
+        Mat mask = new Mat(dst.rows(),dst.cols(),CV_8UC1);
+        //逼近凸包，此处应该使用循环逐渐逼近，确保识别出来的是四边形
+        //最大最小阈值，固定步长逼近
+        //正常来说，必然可以找到四边形，如果不行，也可以使用二分法逼近，根据测试结果判断是否需要二分法
+        int max = 100;
+        int min = 10;
+        do {
+            Imgproc.approxPolyDP(new MatOfPoint2f(matOfPoints.get(0).toArray()),
+                    matOfPoint2f,min,true);
+            min+=5;
+            //System.out.println(min);
+            //System.out.println(matOfPoint2f.toArray().length);
+        }while (matOfPoint2f.toArray().length != 4 && min <= max);
+        if (matOfPoint2f.toArray().length != 4){
+            throw new PhotoNotTrueException("无法找到四个顶点");
+        }
+        matOfPoints.clear();
+        matOfPoints.add(new MatOfPoint(matOfPoint2f.toArray()));
+        //在蒙版中展示逼近的结果
+        Imgproc.drawContours(mask,matOfPoints,0,new Scalar(255,255,255));
+        Imgcodecs.imwrite("D:\\tmp\\mask.jpg", mask);
+
+
+        Point[] points1 = matOfPoint2f.toArray();
+        //透视变换
+        List<Point> listSrcs = Arrays.asList(points1[1],
+                points1[2],points1[3],points1[0]);
+        //顺序为右上。右下，左下，左上
+        Mat srcPoints = Converters.vector_Point_to_Mat(listSrcs, CvType.CV_32F);
+
+        List<Point> listDsts = Arrays.asList(points);
+
+
+        Mat dstPoints = Converters.vector_Point_to_Mat(listDsts, CvType.CV_32F);
+
+        Mat perspectiveMmat = Imgproc.getPerspectiveTransform(srcPoints, dstPoints);
+
+        Mat dst1 = new Mat();
+
+        Imgproc.warpPerspective(srcImage, dst1, perspectiveMmat, srcImage.size());
+
+        Imgcodecs.imwrite("D:\\tmp\\dst.jpg", dst1);
+        Imgcodecs.imwrite("D:\\tmp\\src.jpg",srcImage);
+
+        //Mat dst2 = dst1.clone();
+        //Imgproc.cvtColor(dst, dst, Imgproc.COLOR_BGRA2GRAY);
+        //toGray(dst2);
+        //Imgproc.GaussianBlur(dst , dst , new Size(15,15),0);
+        //gaussianBlur(dst2);
+        //canny(dst2);
+        //Imgcodecs.imwrite("D:\\tmp\\dst2.jpg", dst2);
+        //RotatedRect rect = findMaxRect(dst1);
+        // 旋转矩形
+        //Mat CorrectImg = rotation(dst2 , rect);
+        Mat NativeCorrectImg = rotation(dst1 , rect);
+        //Imgcodecs.imwrite("D:\\tmp\\CorrectImg.jpg",CorrectImg);
+        Imgcodecs.imwrite("D:\\tmp\\NativeCorrectImg.jpg",NativeCorrectImg);
+        //裁剪矩形
+        int width = Math.max((int) rect.size.width,(int)rect.size.height);
+        int height = Math.min((int) rect.size.width,(int)rect.size.height);
+        Point center = rect.center;
+        int startLeft = (int) center.x - width / 2;
+        int startUp = (int)center.y - height / 2;
+        //Imgcodecs.imwrite("D:\\out\\nativeCorrectMat2.jpg",nativeCorrectMat);
+        Mat temp = new Mat(NativeCorrectImg , new Rect(startLeft , startUp , width , height ));
+        Mat t = new Mat();
+        temp.copyTo(t);
+        return t;
     }
+
     /**
      * 返回边缘检测之后的最大矩形
      *
@@ -943,7 +956,6 @@ public class ImageUtils {
         // 获取矩形的四个顶点
         Point[] rectPoint = new Point[4];
         rect.points(rectPoint);
-
         double angle = rect.angle;
         if (rect.size.width < rect.size.height ){
             angle += 90;
@@ -956,14 +968,39 @@ public class ImageUtils {
         src.copyTo(CorrectImg);
 
         // 得到旋转矩阵算子
-        Mat matrix = Imgproc.getRotationMatrix2D(center, angle, 0.8);
+        Mat matrix = Imgproc.getRotationMatrix2D(center, angle, 1);
 
-        Imgproc.warpAffine(CorrectImg, CorrectImg, matrix, CorrectImg.size(), 1, 0, new Scalar(0, 0, 0));
+        Imgproc.warpAffine(CorrectImg, CorrectImg, matrix, CorrectImg.size());
 
         return CorrectImg;
     }
 
 
+    /**
+     * 旋转180°
+     * @param src 原图像
+     * @return 结果
+     */
+    public static Mat rotation180(Mat src){
+        Mat matrix = Imgproc.getRotationMatrix2D(new Point(src.width() / 2 , src.height() / 2)
+        ,180 , 1);
+        Imgproc.warpAffine(src , src , matrix , src.size() , 1 , 0 , new Scalar(0,0,0));
+        return src;
+    }
+
+    public static Mat rotation180AndScale(Mat src){
+        Mat matrix = Imgproc.getRotationMatrix2D(new Point(src.width() / 2 , src.height() / 2)
+                ,180 , 0.9);
+        Imgproc.warpAffine(src , src , matrix , src.size() , 1 , 0 , new Scalar(0,0,0));
+        return src;
+    }
+
+    /**
+     * 从原图片中裁切出正确的身份证图片
+     * @param correctMat 旋转完毕的边缘检测图片
+     * @param nativeCorrectMat 旋转完毕的原图片
+     * @return 正确的身份证图片，但可能仍然需要反转180°
+     */
     public static Mat cutRect(Mat correctMat , Mat nativeCorrectMat) {
         // 获取最大矩形
         RotatedRect rect = findMaxRect(correctMat);
@@ -974,6 +1011,7 @@ public class ImageUtils {
         int startUp = (int)Math.min(rectPoint[0].y , rectPoint[1].y);
         int width = (int)Math.abs(rectPoint[2].x - rectPoint[0].x);
         int height = (int)Math.abs(rectPoint[1].y - rectPoint[0].y);
+        //Imgcodecs.imwrite("D:\\out\\nativeCorrectMat2.jpg",nativeCorrectMat);
         Mat temp = new Mat(nativeCorrectMat , new Rect(startLeft , startUp , width , height ));
         Mat t = new Mat();
         temp.copyTo(t);
@@ -1015,19 +1053,110 @@ public class ImageUtils {
     /**
      * 高斯滤波
      */
-    public static Mat gaussianBlur(Mat src){
-        Mat result = new Mat();
+    public static void gaussianBlur(Mat src){
         /*src：输入源图像
         dst：输出目标图像
         ksize：内核模板大小
         sigmaX：高斯内核在X方向的标准偏差
         sigmaY：高斯内核在Y方向的标准偏差。如果sigmaY为0，他将和sigmaX的值相同，如果他们都为0，那么他们由ksize.width和ksize.height计算得出
         borderType： 用于判断图像边界的模式*/
-        Imgproc.GaussianBlur(src, result, new Size(15,15), 0, 0, Core.BORDER_DEFAULT);
-        return result;
+        Imgproc.GaussianBlur(src, src, new Size(15,15), 0, 0, Core.BORDER_DEFAULT);
+    }
+    /**
+     * 透视变换
+     * @param src
+     * @param points
+     * @return 结果
+     */
+    public static Mat warpPerspective(Mat src , Point[] points) {
+
+        // 点的顺序[左上 ，右上 ，右下 ，左下]
+        //传过来的点的顺序事右上 右下 左下 左上
+        List<Point> listSrcs = Arrays.asList(points[2], points[3], points[1], points[0]);
+        Mat srcPoints = Converters.vector_Point_to_Mat(listSrcs, CvType.CV_32F);
+
+        List<Point> listDsts = Arrays.asList(new Point(0, 0), new Point(src.width(), 0),
+                new Point(src.width(), src.height()), new Point(0, src.height()));
+
+
+        Mat dstPoints = Converters.vector_Point_to_Mat(listDsts, CvType.CV_32F);
+
+        Mat perspectiveMmat = Imgproc.getPerspectiveTransform(srcPoints, dstPoints);
+
+        Mat dst = new Mat();
+
+        Imgproc.warpPerspective(src, dst, perspectiveMmat, src.size());
+
+        return dst;
     }
 
-    public void gaussianBlur(){
-        this.mat = gaussianBlur(this.mat);
+    /**
+     * 前期处理
+     * @param src1 完全未处理的src
+     * @return edge
+     */
+    public static Mat proProcess(Mat src1){
+        src1 = resize(src1);
+        Mat src = src1.clone();
+        toGray(src);
+        gaussianBlur(src);
+        canny(src);
+        return src;
+    }
+
+    /**
+     * 只保留身份证轮廓
+     * @param src 未进行任何处理的原图
+     * @return 只含有身份证轮廓的二值化图片
+     */
+    public static Mat onlyContours(Mat src){
+        src = proProcess(src);
+        MatOfPoint contour = findMaxContour(src);
+        int i, j;
+        int width = src.width(), height = src.height();
+        for (j = 0; j < height; ++j) {
+            for (i = 0; i < width; ++i) {
+                    src.put(j, i, BLACK);
+                }
+            }
+        List<MatOfPoint> contours = new ArrayList<>();
+        contours.add(contour);
+        drawContours(src, contours);
+        return src;
+
+    }
+
+    /**
+     * 寻找凸包
+     * @param src 轮廓
+     * @return 结果
+     */
+    public static MatOfPoint convextHull(MatOfPoint src){
+        MatOfInt result = new MatOfInt();
+        /*
+        void convexHull(InputArray points,OutputArray hull,bool clockwise = false,bool returnPoints = true)
+        @第一个参数，InputArray类型的Points，输入的二维点集，可以填Mat类型或者std::vector
+        @第二个参数，OutputArray类型的Hull，输出参数，函数调用后找到的凸包
+        @第三个参数，bool类型的clockwise，操作方向标识符。当此标志符为真时，输出的凸包为顺时针方向，
+        否则就为逆时针方向。并且是假定坐标系的x轴指向右，y轴指向上方
+        @第四个参数，bool类型的returnPoints，操作符标识，默认为true。
+        当标识符为真时，函数返回各个凸包的各个点。否则，它返回凸包各点的指数。当输出数组是std：：vector时，此标志被忽略
+         */
+        Imgproc.convexHull(src , result);
+        return convertIndexesToPoints(src, result);
+    }
+
+    public static MatOfPoint convertIndexesToPoints(MatOfPoint contour, MatOfInt indexes) {
+        int[] arrIndex = indexes.toArray();
+        Point[] arrContour = contour.toArray();
+        Point[] arrPoints = new Point[arrIndex.length];
+
+        for (int i=0;i<arrIndex.length;i++) {
+            arrPoints[i] = arrContour[arrIndex[i]];
+        }
+
+        MatOfPoint hull = new MatOfPoint();
+        hull.fromArray(arrPoints);
+        return hull;
     }
 }

@@ -1,13 +1,12 @@
 package test;
 
 import org.opencv.core.Core;
-import util.ImageUtils;
 
 public class TestPreProcess {
     static{ System.loadLibrary(Core.NATIVE_LIBRARY_NAME); }
 
     public static void main(String[] args) {
-        ImageUtils imageUtils = new ImageUtils("D:\\project\\tesseract\\OpenCVTest\\origin.jpg");
+        /*ImageUtils imageUtils = new ImageUtils("D:\\project\\tesseract\\OpenCVTest\\origin.jpg");
         imageUtils.photoResize();
         ImageUtils name = new ImageUtils(imageUtils.split(ImageUtils.NAME_START_HEIGHT, ImageUtils.NAME_END_HEIGHT,
                 ImageUtils.NAME_START_WIDTH, ImageUtils.NAME_END_WIDTH));
@@ -39,6 +38,6 @@ public class TestPreProcess {
         number.saveImg("D:\\project\\tesseract\\OpenCVTest\\TestPreProcess_number_gray.jpg");
         number.medianBlur();
         number.binaryzation(65);
-        number.saveImg("D:\\project\\tesseract\\OpenCVTest\\TestPreProcess_number.jpg");
+        number.saveImg("D:\\project\\tesseract\\OpenCVTest\\TestPreProcess_number.jpg");*/
     }
 }

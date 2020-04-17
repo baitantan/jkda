@@ -1,15 +1,14 @@
 package test;
 
 import org.opencv.core.Core;
-import org.opencv.core.Mat;
-import org.opencv.imgcodecs.Imgcodecs;
-import util.ImageUtils;
 
 public class CharacterSpiltTest {
-    static{ System.loadLibrary(Core.NATIVE_LIBRARY_NAME);}
+    static {
+        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+    }
 
     public static void main(String[] args) {
-        String chi_sim = "chi_sim";
+        /*String chi_sim = "chi_sim";
         String eng = "eng";
         ImageUtils src = new ImageUtils("D:\\photo\\cg.jpg");
         src.photoResize();
@@ -85,5 +84,6 @@ public class CharacterSpiltTest {
 
 
         System.out.println(result);
+    }*/
     }
 }
